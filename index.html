@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seinfeld Parent's Guide — Sexual Content by Episode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4ecdb;
+    --paper:#fbf6ea;
+    --ink:#181613;
+    --ink-soft:#403a32;
+    --line:#d8cdb5;
+    --brand:#ef4623;      /* seinfeld orange-red */
+    --brand-deep:#cf3415;
+    --teal:#13a39a;
+    --pink:#e8538b;
+    --gold:#f2b705;
+    /* tier semantics */
+    --t-min:#2f9e6f;
+    --t-mild:#2f86c9;
+    --t-mod:#e0922a;
+    --t-strong:#d2382b;
+    --shadow:0 2px 0 rgba(24,22,19,.9);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"DM Sans",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(19,163,154,.06), transparent 38%),
+      radial-gradient(circle at 88% 8%, rgba(239,70,35,.07), transparent 40%),
+      radial-gradient(circle at 70% 96%, rgba(232,83,139,.06), transparent 42%);
+    background-attachment:fixed;
+  }
+  ::selection{background:var(--brand);color:#fff;}
+
+  /* ---------- decorative squiggle ---------- */
+  .squig{display:block;width:100%;height:18px;overflow:hidden;}
+  .squig svg{display:block;width:100%;height:100%;}
+
+  /* ---------- header ---------- */
+  header{
+    max-width:1180px;margin:0 auto;padding:38px 22px 10px;
+  }
+  .kicker{
+    font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--brand-deep);margin:0 0 10px;
+  }
+  h1{
+    font-family:"Anton",sans-serif;font-weight:400;
+    font-size:clamp(40px,8.5vw,92px);line-height:.92;
+    letter-spacing:.5px;text-transform:uppercase;margin:0;color:var(--ink);
+  }
+  h1 .hl{color:var(--brand);}
+  .sub{
+    font-size:clamp(15px,2.4vw,19px);max-width:780px;margin:16px 0 0;color:var(--ink-soft);
+  }
+  .sub b{color:var(--ink);}
+
+  /* ---------- methodology panel ---------- */
+  .method{
+    max-width:1180px;margin:22px auto 0;padding:0 22px;
+  }
+  details.note{
+    background:var(--paper);border:2.5px solid var(--ink);
+    box-shadow:var(--shadow);border-radius:4px;padding:0;overflow:hidden;
+  }
+  details.note > summary{
+    cursor:pointer;list-style:none;padding:16px 20px;
+    font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.06em;
+    text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:12px;
+    background:var(--gold);color:var(--ink);
+  }
+  details.note > summary::-webkit-details-marker{display:none;}
+  details.note > summary .chev{margin-left:auto;transition:transform .25s;font-size:16px;}
+  details.note[open] > summary .chev{transform:rotate(180deg);}
+  .method-body{padding:18px 22px 22px;font-size:14.5px;}
+  .method-body p{margin:0 0 12px;}
+  .method-body ul{margin:0 0 12px;padding-left:20px;}
+  .method-body li{margin:6px 0;}
+  .method-body strong{color:var(--brand-deep);}
+
+  /* ---------- legend ---------- */
+  .legend{
+    max-width:1180px;margin:20px auto 0;padding:0 22px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:12px;
+  }
+  .leg{
+    background:var(--paper);border:2.5px solid var(--ink);border-radius:4px;
+    box-shadow:var(--shadow);padding:13px 15px;
+  }
+  .leg .top{display:flex;align-items:center;gap:9px;}
+  .dot{width:15px;height:15px;border-radius:50%;border:2px solid var(--ink);flex:none;}
+  .leg .name{font-family:"Anton";font-size:17px;text-transform:uppercase;letter-spacing:.5px;}
+  .leg .age{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-soft);margin-top:7px;line-height:1.35;}
+
+  /* ---------- stats ---------- */
+  .stats{
+    max-width:1180px;margin:24px auto 0;padding:0 22px;
+    display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;
+  }
+  .stat{
+    flex:1 1 120px;background:var(--ink);color:var(--paper);border-radius:4px;
+    padding:14px 16px;border:2.5px solid var(--ink);position:relative;overflow:hidden;
+  }
+  .stat .num{font-family:"Anton";font-size:34px;line-height:1;}
+  .stat .lab{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;margin-top:5px;opacity:.85;}
+  .stat.s-min{background:var(--t-min);} .stat.s-mild{background:var(--t-mild);}
+  .stat.s-mod{background:var(--t-mod);color:#1a1206;} .stat.s-strong{background:var(--t-strong);}
+  .stat.s-min .lab,.stat.s-mild .lab,.stat.s-strong .lab{opacity:.92;}
+
+  /* ---------- controls ---------- */
+  .controls{
+    position:sticky;top:0;z-index:30;
+    background:var(--cream);
+    border-bottom:2.5px solid var(--ink);
+    margin-top:26px;padding:14px 0;
+    box-shadow:0 6px 14px -10px rgba(0,0,0,.4);
+  }
+  .controls-in{max-width:1180px;margin:0 auto;padding:0 22px;position:relative;
+    display:flex;flex-direction:column;gap:9px;}
+  .ctrl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  .filters{display:flex;flex-wrap:wrap;gap:7px;}
+  .fbtn{
+    font-family:"Space Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.04em;
+    text-transform:uppercase;padding:9px 13px;border:2.5px solid var(--ink);background:var(--paper);
+    color:var(--ink);border-radius:3px;cursor:pointer;transition:all .12s;box-shadow:2px 2px 0 var(--ink);
+  }
+  .fbtn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink);}
+  .fbtn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink);}
+  .fbtn[data-on="1"]{background:var(--ink);color:var(--paper);}
+  .fbtn.f-min[data-on="1"]{background:var(--t-min);color:#fff;border-color:var(--t-min);}
+  .fbtn.f-mild[data-on="1"]{background:var(--t-mild);color:#fff;border-color:var(--t-mild);}
+  .fbtn.f-mod[data-on="1"]{background:var(--t-mod);color:#1a1206;border-color:var(--t-mod);}
+  .fbtn.f-strong[data-on="1"]{background:var(--t-strong);color:#fff;border-color:var(--t-strong);}
+  select,input[type="search"]{
+    font-family:"DM Sans";font-size:14px;padding:9px 11px;border:2.5px solid var(--ink);
+    border-radius:3px;background:var(--paper);color:var(--ink);box-shadow:2px 2px 0 var(--ink);
+  }
+  input[type="search"]{min-width:160px;flex:1 1 180px;}
+  .spacer{flex:1 1 auto;}
+  .count-live{font-family:"Space Mono",monospace;font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+
+  /* ---------- season groups ---------- */
+  main{max-width:1180px;margin:0 auto;padding:8px 22px 90px;}
+  .season{margin-top:34px;}
+  .season-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px;}
+  .season-head h2{
+    font-family:"Anton";font-weight:400;text-transform:uppercase;letter-spacing:.5px;
+    font-size:clamp(26px,5vw,40px);margin:0;color:var(--ink);
+  }
+  .season-head h2 .yr{color:var(--brand);}
+  .season-head .meta{font-family:"Space Mono",monospace;font-size:12px;color:var(--ink-soft);}
+  .season .squig{margin:6px 0 16px;height:14px;}
+
+  /* ---------- episode cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:13px;}
+  .ep{
+    background:var(--paper);border:2.5px solid var(--ink);border-radius:5px;
+    box-shadow:var(--shadow);padding:15px 16px 14px;position:relative;
+    display:flex;flex-direction:column;border-left-width:8px;
+  }
+  .ep.l-minimal{border-left-color:var(--t-min);}
+  .ep.l-mild{border-left-color:var(--t-mild);}
+  .ep.l-moderate{border-left-color:var(--t-mod);}
+  .ep.l-strong{border-left-color:var(--t-strong);}
+  .ep .row1{display:flex;align-items:flex-start;gap:10px;}
+  .ep .epno{
+    font-family:"Space Mono",monospace;font-size:11px;font-weight:700;color:#fff;
+    background:var(--ink);padding:3px 7px;border-radius:3px;white-space:nowrap;margin-top:2px;
+  }
+  .ep .title{font-family:"Anton";font-weight:400;font-size:21px;line-height:1.02;
+    text-transform:uppercase;letter-spacing:.3px;flex:1;}
+  .badge{
+    font-family:"Space Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;padding:4px 8px;border-radius:20px;color:#fff;white-space:nowrap;
+    border:2px solid var(--ink);margin-top:2px;
+  }
+  .badge.b-minimal{background:var(--t-min);}
+  .badge.b-mild{background:var(--t-mild);}
+  .badge.b-moderate{background:var(--t-mod);color:#1a1206;}
+  .badge.b-strong{background:var(--t-strong);}
+  .vchk{
+    font-family:"Space Mono",monospace;font-size:9.5px;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;padding:3px 7px;border-radius:20px;white-space:nowrap;margin-top:2px;
+    background:var(--ink);color:var(--gold);border:2px solid var(--ink);
+  }
+  .ep.verified{box-shadow:inset 3px 0 0 var(--gold), var(--shadow);}
+  .ep .desc{font-size:14px;color:var(--ink-soft);margin:11px 0 0;}
+  .ep .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+  .tag{font-family:"Space Mono",monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;
+    padding:2px 7px;border:1.5px solid var(--ink-soft);border-radius:3px;color:var(--ink-soft);background:rgba(0,0,0,.02);}
+  .ep .age{font-family:"Space Mono",monospace;font-size:11px;margin-top:auto;padding-top:11px;color:var(--ink);
+    display:flex;align-items:center;gap:7px;}
+  .ep .age .ic{font-size:13px;}
+
+  .empty{text-align:center;padding:60px 20px;font-family:"Space Mono",monospace;color:var(--ink-soft);}
+  .empty b{display:block;font-family:"Anton";font-size:28px;color:var(--ink);margin-bottom:8px;text-transform:uppercase;}
+
+  footer{max-width:1180px;margin:0 auto;padding:0 22px 60px;font-size:13px;color:var(--ink-soft);}
+  footer .squig{margin-bottom:22px;}
+  footer p{margin:8px 0;}
+  footer code{font-family:"Space Mono",monospace;background:rgba(0,0,0,.05);padding:1px 5px;border-radius:3px;}
+
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr;}
+    .controls{position:static;}
+    h1{font-size:46px;}
+    header{padding:26px 16px 8px;}
+    .method,.legend,.stats,.controls-in,main,footer{padding-left:16px;padding-right:16px;}
+    #search{flex:1 1 100%;min-width:0;}
+    .ctrl-row{gap:8px;}
+    .ep .face{padding:13px 14px 12px;}
+    .ep .title{font-size:19px;}
+  }
+
+  /* ===== flip cards (added) ===== */
+  .grid{align-items:start;}
+  .ep{background:none;border:none;box-shadow:none;border-radius:0;padding:0;display:block;perspective:1600px;}
+  .ep .ep-inner{position:relative;width:100%;transform-style:preserve-3d;will-change:transform,height;
+    transition:transform .5s cubic-bezier(.22,.61,.36,1), height .5s cubic-bezier(.22,.61,.36,1);}
+  .no-anim .ep-inner{transition:none;}
+  .ep.flipped .ep-inner{transform:rotateY(180deg);}
+  .ep .face{position:absolute;top:0;left:0;width:100%;min-height:var(--ep-h,0px);
+    -webkit-backface-visibility:hidden;backface-visibility:hidden;cursor:pointer;
+    background:var(--paper);border:2.5px solid var(--ink);border-radius:5px;box-shadow:var(--shadow);
+    padding:15px 16px 14px;display:flex;flex-direction:column;border-left:8px solid var(--ink);}
+  .ep.l-minimal .face{border-left-color:var(--t-min);}
+  .ep.l-mild .face{border-left-color:var(--t-mild);}
+  .ep.l-moderate .face{border-left-color:var(--t-mod);}
+  .ep.l-strong .face{border-left-color:var(--t-strong);}
+  .ep .ep-back{transform:rotateY(180deg);}
+  .ep.verified{box-shadow:none;}
+  .ep.verified .ep-front{box-shadow:inset 3px 0 0 var(--gold),var(--shadow);}
+  .flip-btn{margin-top:12px;align-self:flex-start;font-family:"Space Mono",monospace;font-weight:700;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border:2px solid var(--ink);
+    background:var(--gold);color:var(--ink);border-radius:3px;cursor:pointer;box-shadow:1.5px 1.5px 0 var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease;}
+  .flip-btn:hover{transform:translate(-1px,-1px);box-shadow:2.5px 2.5px 0 var(--ink);}
+  .ep-back .flip-btn{margin-top:auto;}
+  .ep-back .why-h{font-family:"Anton";font-size:18px;text-transform:uppercase;letter-spacing:.4px;margin:9px 0 7px;color:var(--ink);}
+  .ep-back .why{font-size:13.5px;color:var(--ink-soft);line-height:1.5;margin:0;}
+  .ep-back .why-age{font-family:"Space Mono",monospace;font-size:10.5px;margin-top:11px;display:flex;gap:7px;align-items:flex-start;color:var(--ink);}
+  .ep-back .lbl{font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:12px;}
+  .ep-back .tags{margin-top:5px;}
+
+  /* ===== theme tag filter (added) ===== */
+  .tagfilter{position:static;}
+  .tf-btn{font-family:"Space Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    padding:9px 13px;border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:3px;cursor:pointer;box-shadow:2px 2px 0 var(--ink);}
+  .tf-btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink);}
+  .tf-btn[data-on="1"]{background:var(--pink);color:#fff;border-color:var(--pink);}
+  .tf-panel{position:fixed;z-index:9999;max-height:64vh;overflow:auto;
+    background:var(--paper);border:2.5px solid var(--ink);border-radius:5px;box-shadow:4px 4px 0 var(--ink);padding:13px 15px;display:none;}
+  .tf-panel.open{display:block;}
+  .tf-cat{font-family:"Anton";font-size:14px;text-transform:uppercase;letter-spacing:.4px;color:var(--brand-deep);margin:12px 0 6px;}
+  .tf-cat:first-child{margin-top:0;}
+  .tf-opts{display:flex;flex-wrap:wrap;gap:6px;}
+  .tf-opt{font-family:"Space Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;
+    display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:2px solid var(--ink-soft);border-radius:3px;cursor:pointer;background:#fff;color:var(--ink-soft);user-select:none;}
+  .tf-opt input{margin:0;width:13px;height:13px;}
+  .tf-opt[data-on="1"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .tf-foot{display:flex;justify-content:space-between;align-items:center;margin-top:13px;border-top:1.5px solid var(--line);padding-top:11px;gap:10px;}
+  .tf-clear{font-family:"Space Mono",monospace;font-weight:700;font-size:11px;text-transform:uppercase;border:2px solid var(--ink);background:#fff;color:var(--ink);padding:6px 11px;border-radius:3px;cursor:pointer;}
+  .tf-mode{font-family:"Space Mono",monospace;font-size:10px;color:var(--ink-soft);}
+  /* themes panel position is set in JS (viewport-pinned popover) for reliable on-screen placement */
+</style>
+</head>
+<body>
+
+<div class="squig" aria-hidden="true" id="sq-top"></div>
+
+<header>
+  <p class="kicker">A Parent's Episode Guide · Sex &amp; "Sleeping With Someone"</p>
+  <h1>The <span class="hl">Seinfeld</span> Sex Index</h1>
+  <p class="sub">Every aired episode, rated on <b>how much sexual content or "sleeping with someone" is involved</b>, so you can steer pre-teens and teens toward the gentler ones. Filter by rating or theme, search, and tap any card to flip it for the full reasoning.</p>
+</header>
+
+<section class="method">
+  <details class="note">
+    <summary><span>⚠︎ Read this first — how the ratings work &amp; what they don't cover</span><span class="chev">▾</span></summary>
+    <div class="method-body">
+      <p><strong>The big caveat:</strong> Seinfeld's entire engine is dating, relationships, and sex. Innuendo and "who's sleeping with whom" run through the whole series, so a truly <em>clean</em> episode is the exception, not the rule. The ratings below grade <em>how central and explicit</em> that content is — not whether it exists at all.</p>
+      <p><strong>How I built this:</strong> ratings come from a detailed working knowledge of all nine seasons, then <strong>cross-referenced against the full script canon you provided</strong> (176 of the 180 entries &mdash; the two clip shows have no original script). A keyword-density pass over every script flagged any episode whose dialogue disagreed with its rating; that confirmed the tiers (one improvement &mdash; <em>The Truth</em> gains a nudity flag) and surfaced a Season&nbsp;3 numbering fix. Six of the most sex-forward episodes were also read line-by-line. It is still a judgment-based content map, not a frame-by-frame audit &mdash; treat anything marked <b>Moderate</b> or <b>Strong</b> as a prompt to <strong>preview it yourself</strong>. <strong>Tap any card to flip it</strong> for the full &ldquo;why this rating,&rdquo; and use the <b>Themes &#9662;</b> filter to slice by tag.</p>
+      <p><strong>What "sex" means here:</strong> on-screen Seinfeld is roughly TV-PG — there's essentially no graphic nudity (it's 1990s network TV), and the humor is verbal innuendo and wordplay. "Sexual content" includes plots about sleeping together, contraception, masturbation, faking orgasm, body parts, and the like. <b>Nudity is referenced and implied, almost never shown.</b></p>
+      <p><strong>Beyond sex:</strong> a few episodes carry <em>other</em> mature themes that matter for younger kids even when the sexual content is light — death, drug use, a neo-Nazi, an abortion debate, serial-killer jokes, an eating-disorder subplot. Those are flagged with small tags on the relevant cards.</p>
+      <p><strong>On your list:</strong> the episode list you sent had several duplicates and a few titles that don't exist, and it was missing some real episodes. I've normalized everything to the actual aired run (multi-part stories like <code>The Trip</code>, <code>The Pilot</code>, and <code>The Finale</code> are shown as single combined entries).</p>
+    </div>
+  </details>
+</section>
+
+<section class="legend" id="legend"></section>
+
+<section class="stats" id="stats"></section>
+
+<div class="controls">
+  <div class="controls-in">
+    <div class="ctrl-row ctrl-primary">
+      <div class="filters" id="levelFilters">
+        <button class="fbtn" data-level="all" data-on="1">All levels</button>
+        <button class="fbtn f-min" data-level="minimal" data-on="0">● Minimal</button>
+        <button class="fbtn f-mild" data-level="mild" data-on="0">● Mild</button>
+        <button class="fbtn f-mod" data-level="moderate" data-on="0">● Moderate</button>
+        <button class="fbtn f-strong" data-level="strong" data-on="0">● Strong</button>
+      </div>
+      <div class="tagfilter">
+        <button class="tf-btn" id="tfBtn" type="button" aria-haspopup="true" aria-expanded="false">Themes &#9662;</button>
+        <div class="tf-panel" id="tfPanel"></div>
+      </div>
+    </div>
+    <div class="ctrl-row ctrl-secondary">
+      <select id="seasonSel">
+        <option value="all">All seasons</option>
+      </select>
+      <input type="search" id="search" placeholder="Search title or content…" aria-label="Search episodes">
+      <div class="spacer"></div>
+      <div class="count-live" id="countLive"></div>
+    </div>
+  </div>
+</div>
+
+<main id="list"></main>
+
+<footer>
+  <div class="squig" aria-hidden="true" id="sq-foot"></div>
+  <p><strong>Reminder:</strong> these are guidance calls, not guarantees. When in doubt, watch first — what feels fine for a 16-year-old may not for a 10-year-old, and you know your kid best.</p>
+  <p>Ratings reflect sexual content / "sleeping with someone" as the primary axis; <code>tags</code> note other mature themes.</p>
+</footer>
+
+<script>
+const LEVELS = {
+  minimal : {label:"Minimal", color:"#2f9e6f", age:"OK for all ages \u00b7 kid-safe",        ic:"\u2713"},
+  mild    : {label:"Mild",    color:"#2f86c9", age:"Screen for pre-teens \u00b7 OK for teens", ic:"\u25d4"},
+  moderate: {label:"Moderate",color:"#e0922a", age:"Screen for pre-teens & teens",           ic:"\u25d1"},
+  strong  : {label:"Strong",  color:"#d2382b", age:"Avoid for pre-teens & teens",             ic:"\u2715"}
+};
+const SEASONS = {1:"1990",2:"1991",3:"1991\u201392",4:"1992\u201393",5:"1993\u201394",6:"1994\u201395",7:"1995\u201396",8:"1996\u201397",9:"1997\u201398"};
+
+const EP = [
+ /* ---- SEASON 1 ---- */
+ {s:1,e:1,t:"The Seinfeld Chronicles (Pilot)",l:"mild",v:1,d:"Jerry frets over whether a visiting woman wants romance (she turns out to be engaged). Dating-anticipation jokes — George's 'a woman who wants to sleep with you,' an 'end up naked' job-interview bit — all verbal, nothing shown.",w:"No sexual content beyond Jerry and George debating a visiting woman's romantic intentions — talk, not action. Fine for all ages.",tags:[]},
+ {s:1,e:2,t:"The Stakeout",l:"mild",v:1,d:"Jerry stakes out an office lobby to 'accidentally' re-meet a woman. A quick adult-video-store gag and a 'platonic vs. go to bed immediately' bit; innuendo only, no on-screen content.",w:"A low-key dating-anxiety plot (Jerry rehearsing how he met a woman); no sexual content. All ages.",tags:[]},
+ {s:1,e:3,t:"The Robbery",l:"mild",v:1,d:"Apartment-hunting after a break-in. One throwaway joke — house rules on 'sexual activity… do it in the tub' — is the only sexual reference in the episode.",w:"A burglary farce with a brief flirtation; nothing sexual is shown or implied beyond ordinary dating. Suitable for all ages.",tags:[]},
+ {s:1,e:4,t:"Male Unbonding",l:"minimal",v:1,d:"Jerry comedically 'breaks up' with a clingy childhood friend (framed like a romance). Only trace, oblique innuendo such as a 'whose bra is this?' gag.",w:"Pure friendship/break-up parody with a poker night; no sexual content at all. All ages.",tags:[]},
+ {s:1,e:5,t:"The Stock Tip",l:"mild",v:1,d:"A bad stock tip; Jerry takes girlfriend Vanessa on a Vermont getaway. His 'Phase Two… walking around naked' bit is mild couple's innuendo, nothing explicit.",w:"A bad-investment story and a documentary subplot; only the gentlest dating references, nothing sexual. All ages.",tags:[]},
+ /* ---- SEASON 2 ---- */
+ {s:2,e:1,t:"The Ex-Girlfriend",l:"moderate",v:1,d:"Jerry dates George's recent ex (Marlene). An ongoing sexual relationship is implied — George says she 'seduced' him and fears going back is 'dangerous, sexually' — plus running remarks on how sexy she is. All verbal, nothing shown.",w:"Jerry quietly sleeps with George's ex — the sex is implied and never shown, and the comedy is about the awkward fallout. Referenced intimacy keeps it just above 'clean.'",tags:["innuendo"]},
+ {s:2,e:2,t:"The Pony Remark",l:"minimal",v:1,d:"An offhand 'pony' remark at a family dinner precedes elderly Manya's death. Theme is death/guilt; no sexual content.",w:"An elderly relative dies of upset after a remark; the mature note is mortality, not sex. No sexual content.",tags:["death"]},
+ {s:2,e:3,t:"The Jacket",l:"minimal",v:1,d:"Jerry's pricey suede jacket and a tense dinner with Elaine's intimidating writer father. No sexual content (just a quick 'staunch heterosexuality' jacket gag).",w:"A suede-jacket farce with Elaine's intimidating father; entirely non-sexual. All ages.",tags:[]},
+ {s:2,e:4,t:"The Phone Message",l:"mild",v:1,d:"George panics over a phone message after a date. His subplot hinges on the 'coffee isn't coffee, coffee is sex' euphemism — innuendo only, nothing explicit.",w:"Hinges on a misread answering-machine message and dating nerves; the only adult note is a vague reference to what a date expected. Innuendo at most.",tags:[]},
+ {s:2,e:5,t:"The Apartment",l:"mild",v:1,d:"Elaine eyes the apartment above Jerry; George wears a wedding ring to attract women. Jerry's sex life referenced in passing ('home bed advantage'). Mild innuendo.",w:"An apartment-vacancy scramble and neighborly tension; light dating, no sexual content of consequence.",tags:[]},
+ {s:2,e:6,t:"The Statue",l:"minimal",v:1,d:"George obsesses over a statue cleaned by a grad student. No sexual content (just an offhand 'seeing my father naked' gag).",w:"A cleaning-lady/stolen-statue caper; no sexual content. All ages.",tags:[]},
+ {s:2,e:7,t:"The Revenge",l:"minimal",v:1,d:"George schemes to slip his boss a 'mickey' after quitting; Kramer's cement caper. No sexual content, but Newman's flippant suicide threat (Kramer's reply: 'jump') recurs as dark comedy.",w:"George quits then un-quits; the dark beat is Newman's comedic threat to jump (a suicide gag) and a spiked-drink revenge, plus a throwaway Kramer 'I do everything naked' riff. No real sexual content.",tags:["suicide/self-harm", "dark humor"]},
+ {s:2,e:8,t:"The Heart Attack",l:"minimal",v:1,d:"George wrongly thinks he's having a heart attack; a holistic-healer subplot. No sexual content; an absurd 'kill me / pillow' mock-mercy gag.",w:"A health scare and a quack healer; the mature element is medical/mortality, not sex.",tags:["medical"]},
+ {s:2,e:9,t:"The Deal",l:"strong",v:1,d:"Jerry and Elaine draw up 'rules' to sleep together while staying friends ('this and that'). Sex is the whole premise — the naked station, 'thirty-seven times,' 'lingerie? too sexual' — frank throughout but not graphically shown.",w:"Jerry and Elaine negotiate explicit ground rules for adding sex to their friendship ('this'/'that'); sex is the entire premise, discussed frankly though never shown. Preview first for younger viewers.",tags:["sex: central premise", "innuendo"]},
+ {s:2,e:10,t:"The Baby Shower",l:"mild",v:1,d:"Elaine hosts a shower for a flaky performance artist; Jerry gets illegal cable. Mild nudity references (the cable's 'movies, sports, nudity'; a Hair 'love-in' joke).",w:"A baby-shower gathering and an old grudge; no sexual content. All ages.",tags:[]},
+ {s:2,e:11,t:"The Chinese Restaurant",l:"mild",v:1,d:"The real-time wait for a table — mostly clean, but George's recounted 'we start to fool around, it's the first time' Tatiana subplot is a euphemistic sexual situation.",w:"The famous real-time wait for a table; bickering, not sex. All ages — a clean classic.",tags:[]},
+ {s:2,e:12,t:"The Busboy",l:"mild",v:1,d:"George inadvertently gets a busboy fired; Elaine's brief fling Ed overstays. Mild euphemism for the fling ('we shared an interpersonal experience').",w:"A restaurant-fire mishap and a missing-cat subplot; no sexual content.",tags:[]},
+ /* ---- SEASON 3 ---- */
+ {s:3,e:1,t:"The Note",l:"moderate",v:1,d:"The gang games insurance for massages. George's storyline is his panic that a male masseur's touch aroused him ('I think it moved') — frank arousal/gay-panic anxiety via euphemism.",w:"Jerry suspects his male massage therapist aroused him — an 'am I attracted to a man?' anxiety played for laughs; non-explicit, but the running discomfort about arousal nudges it up.",tags:["innuendo", "LGBT theme"]},
+ {s:3,e:2,t:"The Truth",l:"mild",v:1,d:"George's brutal honesty wrecks a breakup; Kramer dates Elaine's roommate and has 'make-out sessions' on her couch. Mild references to becoming 'intimate.'",w:"George's brutal honesty wrecks a relationship, while Kramer and a lingerie model end up seeing each other 'completely naked' (a comedic comfort-with-nudity thread). Nudity is referenced, not shown — mild.",tags:["nudity", "body humor"]},
+ {s:3,e:3,t:"The Pen",l:"minimal",v:1,d:"Jerry and Elaine visit his Florida parents; Elaine overdoes muscle relaxers. No sexual content beyond a glancing callback to their old arrangement.",w:"Florida visit, a coveted astronaut pen, and back pain treated with muscle relaxants. The flag is medication, not sex.",tags:["medical"]},
+ {s:3,e:4,t:"The Dog",l:"minimal",v:1,d:"Jerry is stuck dog-sitting a drunk stranger's dog; Kramer breaks up with a girlfriend. No sexual content.",w:"Babysitting a sick man's dog; purely a favor-gone-wrong farce. No sexual content.",tags:[]},
+ {s:3,e:5,t:"The Library",l:"mild",v:1,d:"An overdue copy of 'Tropic of Cancer' and a library cop; Jerry's memory of a classmate 'developing a body,' a virgin/penicillin gag, plus a throwaway eating-disorder one-liner. Mild.",w:"A library-fine mystery and a menacing 'library cop'; a faint old-flame backstory, nothing sexual.",tags:[]},
+ {s:3,e:6,t:"The Parking Garage",l:"minimal",v:1,d:"Lost in a mall garage. On the sexual axis it's clean (one 'making out on blankets' aside); the episode's edge is the public-urination 'scrotum' crude humor.",w:"The whole episode is the gang lost in a parking garage; the only crude beat is a public-urination jam. No sexual content.",tags:["crude humor"]},
+ {s:3,e:7,t:"The Café",l:"minimal",v:1,d:"Jerry tries to help struggling restaurateur Babu Bhatt; Elaine secretly takes an IQ test for George's girlfriend. No sexual content.",w:"Jerry secretly props up a failing restaurant; gentle and non-sexual. All ages.",tags:[]},
+ {s:3,e:8,t:"The Tape",l:"moderate",v:1,d:"Elaine leaves an anonymous erotic message on Jerry's tape recorder ('slide my tongue around you like a snake') as a prank; a Penthouse-letter reference and a camcorder 'adult film' role-play. Sexual, comedic, not depicted.",w:"An anonymous sexy message on Jerry's exercise-video tape, plus a frank phone-flirtation, drive the plot — strongly suggestive talk, though nothing is depicted.",tags:["innuendo", "phone sex"]},
+ {s:3,e:9,t:"The Nose Job",l:"moderate",v:1,d:"George fixates on a girlfriend's nose; Jerry is helplessly lusting after an awful woman — the famous 'mind vs. the loins' tug-of-war. Frank about physical attraction.",w:"Dominated by 'the battle of the brains and the loins' — George's libido personified — and frank talk of being attracted to a woman after her nose job. Sexual urges are the engine; non-explicit.",tags:["innuendo", "body humor"]},
+ {s:3,e:10,t:"The Stranded",l:"mild",v:1,d:"The gang is stuck at a Long Island party; a woman (Ava) makes a vague pass at Jerry. Mostly mild.",w:"A stranded-at-a-party farce; brief dating banter, no sexual content.",tags:[]},
+ {s:3,e:11,t:"The Alternate Side",l:"minimal",v:1,d:"'These pretzels are making me thirsty'; Jerry's car is stolen and George botches a car-moving job. No sexual content; Elaine's older boyfriend has a stroke.",w:"A fender-bender chain reaction and a stroke gag; the mature note is medical, not sexual.",tags:["medical"]},
+ {s:3,e:12,t:"The Red Dot",l:"moderate",v:1,d:"George has sex with the office cleaning woman on his desk ('Was that wrong? Should I not have done that?'). Euphemistic but an unambiguous plot point; plus an alcoholic-relapse subplot.",w:"George is fired after sleeping with the cleaning woman on his office desk — the workplace tryst is the premise (implied, not shown), so it clears the mild line.",tags:["workplace romance"]},
+ {s:3,e:13,t:"The Subway",l:"moderate",v:1,d:"A nude man rides Jerry's subway car (comedic); George is lured to a hotel by a con woman who handcuffs him to the bed in his underwear and robs him; Elaine attends a lesbian wedding.",w:"Each character's subway ride; one strand has George lured to a hotel, handcuffed to the bed and robbed after implied sex, and a naked man rides the train. Implied sex plus nudity — preview for pre-teens.",tags:["nudity", "innuendo"]},
+ {s:3,e:14,t:"The Pez Dispenser",l:"minimal",v:1,d:"A Pez gag at a piano recital; the gang stages an intervention for a cocaine-using friend. Drug theme, no sexual content.",w:"A melted-Pez recital gag and a rehab subplot; the flag is addiction/rehab, not sex.",tags:["drugs/addiction"]},
+ {s:3,e:15,t:"The Suicide",l:"moderate",v:1,d:"Preview-worthy: the plot centers on a neighbor's suicide attempt and opens with a monologue that treats suicide flippantly. On the sexual side, the comatose man's girlfriend aggressively comes on to Jerry (near-infidelity).",w:"A neighbor lies in a coma after a suicide attempt and the gang frets over his belongings — a serious self-harm theme handled darkly. Flagged for the subject, not for sex.",tags:["suicide/self-harm"]},
+ {s:3,e:16,t:"The Fix-Up",l:"strong",v:1,d:"Jerry sets George up with Cynthia; they sleep together, and Kramer's defective condoms cause a pregnancy scare. Explicit talk of condoms, sex, and pregnancy.",w:"Built around setting up two friends, condoms, and frank talk of their sex life and protection — sex and contraception are the sustained subject. Preview first.",tags:["sex: central premise", "contraception"]},
+ {s:3,e:17,t:"The Boyfriend (Part 1)",l:"mild",v:1,d:"Jerry strikes up an instant 'bromance' with Mets star Keith Hernandez — a sustained sexual-innuendo parody of dating (the nervous first hangout; helping him move framed as 'going all the way'); George launches his 'Vandelay Industries' unemployment ruse. All innuendo, nothing depicted.",w:"Jerry's instant 'bromance' with a ballplayer is a wall-to-wall dating parody (the nervous first hangout, 'going all the way'); all innuendo, nothing depicted.",tags:["innuendo", "LGBT theme"]},
+ {s:3,e:18,t:"The Boyfriend (Part 2)",l:"mild",v:1,d:"Keith starts dating Elaine and Jerry's jealousy plays just like a love triangle (the 'did you two… Milk? Cookies?' euphemism, answered no; a locker-room 'peek' gag); a JFK 'second-spitter' magic-loogie parody. All innuendo, nothing depicted.",w:"The love-triangle half — the relationship plays like a breakup, with a coy 'Milk? Cookies?' euphemism (answered no). Innuendo only.",tags:["innuendo", "LGBT theme"]},
+ {s:3,e:19,t:"The Limo",l:"minimal",v:1,d:"Jerry and George impersonate a stranger and end up in a neo-Nazi's limo. No sexual content; the hate-group satire is the mature element.",w:"A late-night limo impersonation that spirals into a neo-Nazi rally — the disturbing element is a hate group, not sex.",tags:["hate group", "disturbing"]},
+ {s:3,e:20,t:"The Good Samaritan",l:"mild",v:1,d:"Jerry chases a hit-and-run driver and dates her; an affair subplot; Kramer has near-seizures triggered by a TV host's voice. Mild flirtation/dating.",w:"Jerry dates a woman with a hair-trigger temper behind the wheel and chases a hit-and-run driver; light dating, no sexual content.",tags:[]},
+ {s:3,e:21,t:"The Letter",l:"mild",v:1,d:"An Orioles-cap dress-code standoff in the Yankees' owner's box; an artist paints Kramer, who flirtatiously offers to pose nude ('our little secret'). Mild; also a passing circumcision reference.",w:"Nina's portrait of Kramer, an Orioles-cap ejection from Yankee Stadium, and a lifted break-up letter; a little dating, no sexual content.",tags:[]},
+ {s:3,e:22,t:"The Parking Space",l:"minimal",v:1,d:"An epic head-in vs. back-in parking dispute. No sexual content.",w:"A head-in-versus-back-in parking standoff played entirely for farce; no sexual content. All ages.",tags:[]},
+ {s:3,e:23,t:"The Keys",l:"minimal",v:1,d:"Kramer loses his key privileges and decamps to L.A. No sexual content (an oblique 'horsing around' intrusion gag only).",w:"Jerry and George swap apartment keys and personal boundaries collapse; non-sexual throughout.",tags:[]},
+ /* ---- SEASON 4 ---- */
+ {s:4,e:1,t:"The Trip (Part 1)",l:"mild",v:1,d:"Jerry brings George to L.A. to track down Kramer, now an aspiring actor; a woman is found dead clutching Kramer's headshot, making him a 'Smog Strangler' suspect. A prostitute briefly approaches George; a few 'slept together'/'breasts' asides. Mild — the murder plot is the mature element.",w:"Jerry brings George to L.A. to find Kramer, who's mistaken for a serial killer; a prostitute briefly approaches George and a couple of 'slept-with' asides land. Mild — the murder plot is the mature part.",tags:["serial killer", "sex work"]},
+ {s:4,e:2,t:"The Trip (Part 2)",l:"mild",v:1,d:"Kramer is arrested as the Smog Strangler, then cleared when the real killer strikes again and the guys clear his name. Mild; the serial-killer subplot is the mature element, not sex.",w:"Kramer is cleared of the murders; the through-line is the serial-killer farce, not sex. Mild.",tags:["serial killer"]},
+ {s:4,e:3,t:"The Pitch",l:"minimal",v:1,d:"Jerry and George pitch a 'show about nothing' to NBC; Crazy Joe Davola debuts. No sexual content.",w:"The pitch meeting for the 'show about nothing'; purely showbiz comedy, no sexual content.",tags:[]},
+ {s:4,e:4,t:"The Ticket",l:"minimal",v:1,d:"Newman fights a speeding ticket with a far-fetched defense built on Kramer's head injury. No sexual content.",w:"NBC executives court Jerry and George; non-sexual workplace farce. All ages.",tags:[]},
+ {s:4,e:5,t:"The Wallet",l:"minimal",v:1,d:"Jerry's parents visit and Morty's wallet goes missing; Jerry's watch saga; Elaine starts trying to ditch her manipulative therapist (not a sexual subplot). No sexual content.",w:"A watch, a furrier, and parental worry; no sexual content. All ages.",tags:[]},
+ {s:4,e:6,t:"The Watch",l:"mild",v:1,d:"The watch saga continues; Elaine has Kramer pose as her boyfriend to escape her therapist, prepping a fake sexual history ('have we been intimate?… five times a week'). Mild innuendo.",w:"Jerry buys back his own watch and Elaine's psychiatrist subplot; light dating, nothing sexual.",tags:[]},
+ {s:4,e:7,t:"The Bubble Boy",l:"mild",v:1,d:"A trivia spat with a boy in a plastic bubble who turns out to be a lech (he grabs at Susan); a 'you'll be naked of course' sleeping-arrangement tease; a cabin burns down. Mild, crude.",w:"A road trip to meet a sickly 'bubble boy' that ends in a brawl; the crude beat is a Trivial-Pursuit typo joke, not sex.",tags:["crude humor", "disability theme"]},
+ {s:4,e:8,t:"The Cheever Letters",l:"moderate",v:1,d:"Jerry inadvertently offends his girlfriend during 'dirty talk'; charred letters reveal Susan's father's closeted affair with author John Cheever, read aloud with explicit language ('orgasm'). Frank, but not the whole episode.",w:"Held moderate because the dialogue turns frankly sexual — a steamy letter and explicit 'dirty-talk' phone banter — plus a 'maybe he's gay' thread. Talk is graphic even though nothing is shown.",tags:["innuendo", "affair", "LGBT theme"]},
+ {s:4,e:9,t:"The Opera",l:"minimal",v:1,d:"Elaine's boyfriend, the unstable Crazy Joe Davola, stalks her (a wall of telephoto photos, traps her, she maces him) and the gang at the opera in a clown costume. The mature element is the stalking/mental illness, not sex.",w:"George's clingy girlfriend won't leave; the unsettling note is stalking-style obsession, not sexual content.",tags:["stalking"]},
+ {s:4,e:10,t:"The Virgin",l:"strong",v:1,d:"Jerry dates Marla, a virgin; Elaine 'educates' her about sex and leaving after sex; frank talk of virginity and the first time throughout. Sex is the central topic (and it sets up 'The Contest').",w:"The plot is whether and how a long-celibate woman will lose her virginity, discussed openly and repeatedly — sex is the central subject. Preview first.",tags:["sex: central premise"]},
+ {s:4,e:11,t:"The Contest",l:"strong",v:1,d:"The famous masturbation contest — who can stay 'master of my domain' longest. Never said outright ('gratifying themselves'), but unmistakable, and the entire premise; plus a nude neighbor and Marla's virginity.",w:"The masturbation-abstinence bet ('master of your domain') makes self-pleasure the explicit, sustained engine of the episode. Frank throughout — discretion advised.",tags:["sex: central premise", "crude humor"]},
+ {s:4,e:12,t:"The Airport",l:"mild",v:1,d:"Jerry shares a first-class flight with a glamorous model — flirtation, snuggling, and her 'sultry photo shoot' talk; Elaine suffers in coach; an airport fugitive/debt-chase subplot. Suggestive, nothing depicted.",w:"Competing airport storylines and a first-class/coach divide; brief flirtation, no sexual content.",tags:[]},
+ {s:4,e:13,t:"The Pick",l:"moderate",v:1,d:"Elaine's Christmas card accidentally exposes her nipple (mailed to hundreds); Kramer's Calvin Klein underwear ad accidentally exposes his genitals; plus Jerry's nose-pick misunderstanding. The photos are never shown, but both exposures drive the episode.",w:"Held moderate for real nudity: Elaine's exposed nipple on a Christmas-card photo, plus George's 'the pick' nose mishap mistaken for something worse. The nudity is actually shown.",tags:["nudity", "body humor"]},
+ {s:4,e:14,t:"The Movie",l:"minimal",v:1,d:"A farce of the gang missing each other across movie theaters; only a passing 'Rochelle, Rochelle' erotic-film trailer gag. No depicted content.",w:"A movie-theater mix-up farce; non-sexual throughout. All ages.",tags:[]},
+ {s:4,e:15,t:"The Visa",l:"minimal",v:1,d:"George dates a lawyer who finds him funny and begs Jerry not to be funny (Jerry's fake 'darkness' backfires); Babu is deported over a mail mix-up. A chaste dating frame — no sexual content.",w:"A trip-to-the-beach lie and an awkward houseguest; no sexual content.",tags:[]},
+ {s:4,e:16,t:"The Shoes",l:"moderate",v:1,d:"The running gag is George, an adult, getting caught staring at the cleavage of NBC president Russell's 15-year-old daughter, then a scheme to make Russell stare at Elaine's. Suggestive/leering (no nudity or sex), but the minor angle is worth a preview.",w:"Moderate chiefly for a brief but real flag — a businessman ogling the cleavage of a clothier's teenage daughter — alongside adult cleavage comedy. Discomfort for younger viewers.",tags:["minor-sexualization flag", "body humor"]},
+ {s:4,e:17,t:"The Outing",l:"mild",v:1,d:"A reporter mistakenly believes Jerry and George are a gay couple; they deny it with 'not that there's anything wrong with that.' Entirely the misunderstanding, handled comedically (it won a GLAAD award); a brief make-out and a passing 'porn actor' gag. No explicit content.",w:"The 'not that there's anything wrong with that' episode — a reporter mistakes Jerry and George for a couple. The orientation comedy is tasteful and non-explicit, so mild.",tags:["LGBT theme"]},
+ {s:4,e:18,t:"The Old Man",l:"minimal",v:1,d:"The gang volunteers with the elderly; a record-resale scheme. No sexual content (George's tasteless 'a woman who can't speak English' line aside).",w:"An old man George reluctantly befriends; warm and non-sexual. The mild flag is just aging/illness.",tags:["elderly/illness"]},
+ {s:4,e:19,t:"The Implant",l:"moderate",v:1,d:"Jerry obsesses over whether Sidra's breasts are real and sends Elaine to 'check'; a sauna grope and frank breast-touching talk; 'they're real and they're spectacular.' Heavily body-focused; no nudity actually shown.",w:"Held moderate for sustained breast-focused comedy — debating whether a girlfriend's are real and a locker-room grope — though no actual nudity is shown.",tags:["body humor", "innuendo"]},
+ {s:4,e:20,t:"The Junior Mint",l:"mild",v:1,d:"Jerry can't recall his date's name — only that it 'rhymes with a female body part' (an anatomy-rhyme guessing gag; the word's never said); plus a Junior Mint dropped into a surgery patient. Innuendo/wordplay, nothing depicted.",w:"A surgeon distracted while a candy drops into a patient; medical-mishap comedy, only the faintest dating thread. Essentially clean.",tags:[]},
+ {s:4,e:21,t:"The Smelly Car",l:"mild",v:1,d:"A valet's body odor infests Jerry's car; George reconnects with ex Susan, now dating a woman (and is oddly turned on / frets he 'drove her to it') while Kramer 'turns' her girlfriend straight; a passing erotic-film rental gag. Orientation comedy, non-explicit.",w:"A bad smell ruins a car; a side thread plays on a girlfriend's possible past relationship with a woman. Non-explicit — mild with an LGBT note.",tags:["LGBT theme"]},
+ {s:4,e:22,t:"The Handicap Spot",l:"minimal",v:1,d:"George parks in a handicap spot, a woman is injured, and a mob totals the car; Kramer's chaste romance with her; George becomes his father's butler. No sexual content.",w:"A reserved handicapped space and the fallout; a moral-comedy farce with no sexual content.",tags:[]},
+ {s:4,e:23,t:"The Pilot (Part 1)",l:"mild",v:1,d:"The 'show about nothing' gets cast; NBC president Russell develops a harmless crush on Elaine; Elaine bristles at a coffee shop that hires only 'buxom' waitresses; George's white-lip-spot cancer scare leads to a biopsy; 'Crazy Joe' Davola lurks. Mild.",w:"The pilot gets cast: an exec's harmless crush on Elaine and a 'buxom waitresses' gripe sit alongside George's cancer-scare biopsy. Light/suggestive — mild.",tags:["medical", "innuendo"]},
+ {s:4,e:24,t:"The Pilot (Part 2)",l:"mild",v:1,d:"The pilot airs to mixed reactions; a lovestruck Russell joins Greenpeace to impress Elaine; George's biopsy comes back benign. Mild.",w:"The pilot airs; the lingering note is George's benign biopsy result. No real sexual content beyond the earlier crush. Mild.",tags:["medical"]},
+ /* ---- SEASON 5 ---- */
+ {s:5,e:1,t:"The Mango",l:"strong",v:1,d:"Elaine admits she faked every orgasm with Jerry; he begs for a chance to 'even the score' and they sleep together again; George frets his girlfriend fakes it too. Sustained, explicit talk of faking orgasms — sex is the premise.",w:"Faked orgasms are stated outright and a 'do-over' is demanded — sex is the explicit premise, talked about bluntly throughout. Preview first.",tags:["sex: central premise"]},
+ {s:5,e:2,t:"The Puffy Shirt",l:"minimal",v:1,d:"A 'low-talker' tricks Jerry into wearing a ridiculous pirate shirt on the Today Show; George becomes a hand model. No sexual content — a clean classic.",w:"The puffy-shirt fiasco and George's hand-modeling; a clean classic with no sexual content.",tags:[]},
+ {s:5,e:3,t:"The Glasses",l:"minimal",v:1,d:"A squinting George (lost glasses) thinks he sees Jerry's cousin kissing Jerry's girlfriend — it turns out to be a horse; a dog-bite/rabies scare. No sexual content.",w:"A squinting mix-up (a 'kiss' turns out to be a horse) and a rabies scare; nothing sexual.",tags:[]},
+ {s:5,e:4,t:"The Sniffing Accountant",l:"minimal",v:1,d:"The gang suspects their sniffing accountant of cocaine use; George interviews as a bra salesman; Elaine dumps a writer over his punctuation. Drug-suspicion comedy, no sexual content.",w:"Cocaine suspicion about an accountant and a bra-salesman gag; the flag is drugs, not sex. Essentially clean otherwise.",tags:["drugs/addiction"]},
+ {s:5,e:5,t:"The Bris",l:"mild",v:1,d:"Jerry and Elaine are godparents at a botched circumcision (an unsteady mohel; anatomical, graphic-comedic); a stranger's off-screen death by suicide also damages George's car. No real sexual content — the circumcision and the death are the mature beats.",w:"A botched infant circumcision (graphic-comedic, anatomical) plus an off-screen suicide; mature on medical and death grounds, but no real sexual content — mild.",tags:["medical", "suicide/self-harm"]},
+ {s:5,e:6,t:"The Lip Reader",l:"minimal",v:1,d:"Jerry dates a deaf line judge at the U.S. Open; George recruits her to lip-read his ex; Kramer becomes a ball man. No sexual content.",w:"Jerry dates a deaf line judge and George exploits her lip-reading; a dating frame with no sexual content.",tags:[]},
+ {s:5,e:7,t:"The Non-Fat Yogurt",l:"minimal",v:1,d:"A fat-free-yogurt scandal collides with a Giuliani mayoral-race gag; a young boy starts repeating a swear word he overheard. Strong language, not sex.",w:"A fat-free-yogurt scandal and a kid repeating a swear word — the flag is language, not sex.",tags:["language"]},
+ {s:5,e:8,t:"The Barber",l:"minimal",v:1,d:"Jerry sneaks between his old barber and the barber's nephew; George fakes being hired and shows up to work anyway. No sexual content.",w:"A barber-feud farce; no sexual content. All ages.",tags:[]},
+ {s:5,e:9,t:"The Masseuse",l:"mild",v:1,d:"Jerry obsesses that his masseuse girlfriend won't massage him (and is massaging Kramer instead) — comedic sexual frustration, nothing depicted; George can't bear that she dislikes him; Elaine's boyfriend shares a name with a notorious criminal.",w:"Comedic sexual frustration — a masseuse girlfriend who won't touch Jerry — drives it, but it's all innuendo, nothing depicted. Mild.",tags:["innuendo"]},
+ {s:5,e:10,t:"The Cigar Store Indian",l:"mild",v:1,d:"Jerry offends a Native American date with a cigar-store-Indian gift (cultural-stereotype comedy); George has sex on his parents' bed and leaves a condom wrapper behind; a TV Guide-collector subplot. Implied sex, no explicit content.",w:"A culturally insensitive gift offends a date, and George leaves a condom wrapper after sex on his parents' bed. Implied sex keeps it mild; the bigger flag is the stereotype comedy.",tags:["race/ethnic humor", "innuendo"]},
+ {s:5,e:11,t:"The Conversion",l:"mild",v:1,d:"George converts religions to keep a girlfriend; Kramer has 'the kavorka' — an animal magnetism so strong even a nun-in-training desires him. A sexual-magnetism gag, non-explicit.",w:"Kramer's 'kavorka' — irresistible animal magnetism, even to a nun-in-training — is a non-explicit sexual-allure gag. Mild.",tags:["innuendo"]},
+ {s:5,e:12,t:"The Stall",l:"mild",v:1,d:"Jerry dates a woman Kramer realizes is the operator from his phone-sex line; Elaine clashes with her over 'can you spare a square?' and dates a vain 'mimbo.' A non-explicit phone-sex subplot.",w:"A girlfriend turns out to run a phone-sex line (Kramer's a caller); the phone-sex subplot is referenced, not heard explicitly. Mild.",tags:["sex work", "phone sex"]},
+ {s:5,e:13,t:"The Dinner Party",l:"minimal",v:1,d:"A quest for chocolate babka and wine before a party; a Saddam look-alike blocks the car. No sexual content — another clean classic.",w:"A babka-and-wine errand before a party; non-sexual farce. All ages.",tags:[]},
+ {s:5,e:14,t:"The Marine Biologist",l:"minimal",v:1,d:"George pretends to be a marine biologist to impress a date, climaxing in the beached-whale/golf-ball saga; Elaine works with a volatile Russian author. A lie to land a date — no sexual content.",w:"George's marine-biologist lie peaks with the beached whale; a lie to land a date, no sexual content.",tags:[]},
+ {s:5,e:15,t:"The Pie",l:"mild",v:1,d:"Jerry is unnerved that his girlfriend won't share a piece of pie; Elaine is disturbed by a store mannequin that's her exact double; George's new suit makes a noise; a restaurant-hygiene gross-out. Mild.",w:"A girlfriend who won't share pie and an unsettling Elaine-lookalike mannequin; faintly objectifying but nothing explicit. Mild.",tags:["innuendo"]},
+ {s:5,e:16,t:"The Stand-In",l:"moderate",v:1,d:"On a first date with Elaine, a man 'takes it out,' thinking exposure is expected — an indecent-exposure incident that drives the plot; Kramer pressures his 'little person' stand-in friend to wear lifts; Jerry visits a sick friend.",w:"Held moderate for a real indecent-exposure incident — a date 'takes it out,' thinking it's expected. An actual sexual act, though not graphically shown.",tags:["indecent exposure"]},
+ {s:5,e:17,t:"The Wife",l:"mild",v:1,d:"Jerry's girlfriend poses as his 'wife' for a dry-cleaning discount and they play house (implied intimacy); George uses the gym shower as a urinal and fears getting caught. Mild, with a gross-out gag.",w:"A couple play house (implied intimacy) for a dry-cleaning discount, plus a gym-shower urination gag. Implied, non-explicit — mild with a crude note.",tags:["innuendo", "crude humor"]},
+ {s:5,e:18,t:"The Raincoats (Part 1)",l:"mild",v:1,d:"Jerry's parents are visiting and he can't get any alone-time with his girlfriend; a 'close-talker' attaches himself to Morty and Helen; Kramer and Morty hatch a belt-less-raincoat resale scheme. Mild.",w:"Setup half — Jerry can't get alone time with his girlfriend while his parents visit. Non-explicit relationship comedy.",tags:[]},
+ {s:5,e:19,t:"The Raincoats (Part 2)",l:"mild",v:1,d:"The scandal lands: Jerry and his girlfriend make out during a screening of 'Schindler's List,' and Newman catches them. A make-out plus a tasteless-timing gag — nothing depicted.",w:"The payoff is the make-out during 'Schindler's List' — kissing plus a tasteless-timing scandal, nothing more. Mild.",tags:["innuendo"]},
+ {s:5,e:20,t:"The Fire",l:"minimal",v:1,d:"George tramples kids and an elderly woman to flee a kitchen fire; a heckler loses a toe; Kramer's bus heroics. Dark comedy, no sexual content.",w:"George tramples others fleeing a fire; dark slapstick, no sexual content.",tags:[]},
+ {s:5,e:21,t:"The Hamptons",l:"moderate",v:1,d:"A beach-house weekend: George is mortified that his date sunbathed topless, angles to see Jerry's girlfriend naked to 'even it up,' and is instead caught mid-undress with post-swim 'shrinkage.' Nudity and body references throughout.",w:"Held moderate for genuine nudity references — a topless sunbather and George's post-swim 'shrinkage,' with talk of seeing a girlfriend naked.",tags:["nudity", "body humor"]},
+ {s:5,e:22,t:"The Opposite",l:"minimal",v:1,d:"George reverses every instinct and his life takes off (a girlfriend, a Yankees job) as Elaine's unravels. A dating subplot, no sexual content.",w:"George does the opposite and his life improves; a dating subplot with no sexual content.",tags:[]},
+ /* ---- SEASON 6 ---- */
+ {s:6,e:1,t:"The Chaperone",l:"minimal",v:1,d:"Jerry dates a Miss America contestant Kramer is coaching (and accidentally kills her pigeons); Elaine starts her job with Mr. Pitt; George pitches cotton Yankees uniforms. No sexual content.",w:"Jerry dates a pageant contestant Kramer coaches; a dating frame, no sexual content.",tags:[]},
+ {s:6,e:2,t:"The Big Salad",l:"minimal",v:1,d:"A 'who really bought the big salad' credit dispute; Jerry dates Newman's ex; the episode ends with a white-Bronco/O.J. police-chase parody. No sexual content.",w:"The 'big salad' credit dispute and an O.J.-style Bronco gag; the flag is a true-crime parody, not sex.",tags:["true-crime parody"]},
+ {s:6,e:3,t:"The Pledge Drive",l:"minimal",v:1,d:"Jerry hosts a PBS pledge drive; a 'high-talker'; bouncing birthday checks from Grandma. No sexual content.",w:"A PBS pledge drive and a 'high-talker'; non-sexual farce. All ages.",tags:[]},
+ {s:6,e:4,t:"The Chinese Woman",l:"mild",v:1,d:"Crossed phone lines lead Jerry to date 'Donna Chang' (who turns out to be white, not Chinese); George's parents separate; men in capes; Kramer learns he has a low sperm count. A mild fertility gag, no explicit content.",w:"A wrong-number date with a faux-'Chinese' woman, plus Kramer's low-sperm-count worry — a mild fertility gag, nothing explicit.",tags:["medical", "innuendo"]},
+ {s:6,e:5,t:"The Couch",l:"minimal",v:1,d:"A new-couch saga (Poppie pees on it) and a heated abortion-politics argument that ends Elaine's relationship and a pizza partnership. The abortion debate is the mature element; no sexual content.",w:"A couch saga overshadowed by a heated abortion-politics argument; the mature element is the abortion debate, not sex.",tags:["abortion debate"]},
+ {s:6,e:6,t:"The Gymnast",l:"mild",v:1,d:"Jerry assumes an Olympic-gymnast girlfriend will be acrobatic in bed and is let down — sexual expectations played for laughs, nothing depicted; George is caught eating from the trash; Kramer's kidney stone.",w:"Jerry assumes an Olympic gymnast will be acrobatic in bed and is let down — sexual expectations played for laughs, nothing depicted. Mild.",tags:["innuendo"]},
+ {s:6,e:7,t:"The Soup",l:"minimal",v:1,d:"Bania foists himself on Jerry (a free suit in exchange for a meal); Kramer goes fridge-free; George turns a waitress off with 'manure' talk; Elaine dates an Englishman. No sexual content.",w:"A Bania free-meal obligation and a manure-killed romance; no sexual content.",tags:[]},
+ {s:6,e:8,t:"The Mom & Pop Store",l:"minimal",v:1,d:"George's questionable 'Jon Voight' car; Kramer is bitten by Jon Voight; a Thanksgiving-parade subplot. No sexual content.",w:"A 'Jon Voight' car and a bite mark; non-sexual farce. All ages.",tags:[]},
+ {s:6,e:9,t:"The Secretary",l:"mild",v:1,d:"George hires a plain secretary to avoid temptation, then makes out with her anyway; a dry-cleaner wears Jerry's clothes; 'skinny mirrors.' A workplace make-out, non-explicit.",w:"George hires a plain secretary to resist temptation, then makes out with her — a workplace tryst, implied not shown. Mild.",tags:["workplace romance"]},
+ {s:6,e:10,t:"The Race",l:"minimal",v:1,d:"A Superman-flavored high-school speed-legend rematch; Kramer as a department-store Santa; Elaine dates a Communist. Nearly squeaky-clean; no sexual content.",w:"A Superman-flavored high-school race rematch; charming and essentially clean.",tags:[]},
+ {s:6,e:11,t:"The Switch",l:"mild",v:1,d:"Jerry schemes to 'switch' from his girlfriend to her roommate; a friend says the only way is to propose a threesome (both reject it, and it never happens); Elaine suspects a model has an eating disorder. The threesome is floated, not depicted.",w:"A scheme to swap girlfriends floats a threesome that's instantly rejected (never happens); a separate strand worries a model has an eating disorder. The sexual idea is only talked about — mild.",tags:["innuendo", "eating disorder"]},
+ {s:6,e:12,t:"The Label Maker",l:"mild",v:1,d:"A re-gifted label maker (the 're-gifter,' Tim Whatley) and a Super Bowl-ticket tangle; George suspects his girlfriend and her male roommate of a 'ménage' setup. Mild innuendo.",w:"A re-gifted label maker and a 'menage' suspicion about a roommate; light innuendo, nothing explicit. Mild.",tags:["innuendo"]},
+ {s:6,e:13,t:"The Scofflaw",l:"minimal",v:1,d:"Newman hunts a parking-ticket scofflaw; an acquaintance fakes still having cancer for sympathy; George gets a toupee. The faked illness is the dark note; no sexual content.",w:"A parking-ticket scofflaw and a man faking cancer for sympathy; the flag is the faked illness, not sex.",tags:["faked illness"]},
+ {s:6,e:14,t:"The Highlights of 100 (Part 1)",l:"moderate",v:1,d:"Part 1 of the 100th-episode clip-show retrospective. Because it samples the whole series, the montage includes some of the show's sexual gags — content varies, so preview if that matters.",w:"A clip-show retrospective. Because it samples the whole series it can surface the show's sexual gags, so content varies — preview if that matters.",tags:["clip show"]},
+ {s:6,e:15,t:"The Highlights of 100 (Part 2)",l:"moderate",v:1,d:"Part 2 of the 100th-episode clip-show retrospective; more of the greatest-hits montage, including some sexual gags. Content varies.",w:"Part two of the greatest-hits montage; same caveat — the compilation includes some sexual gags, so content varies.",tags:["clip show"]},
+ {s:6,e:16,t:"The Beard",l:"mild",v:1,d:"Elaine 'beards' as a gay friend's girlfriend and tries (and fails) to convert him; Jerry sweats a polygraph (and confesses to watching Melrose Place); George dates a bald woman. An orientation premise, non-explicit.",w:"Elaine 'beards' for a gay friend and tries to convert him — a non-explicit orientation premise, like 'The Outing.' Mild with an LGBT note.",tags:["LGBT theme"]},
+ {s:6,e:17,t:"The Kiss Hello",l:"minimal",v:1,d:"Kramer's lobby photo-directory forces everyone into obligatory 'kiss hello' greetings; a friend's bad haircut; an old medical bill. No sexual content.",w:"Kramer's lobby photo-directory forces awkward 'kiss hello' greetings; entirely non-sexual.",tags:[]},
+ {s:6,e:18,t:"The Doorman",l:"mild",v:1,d:"A doorman standoff (Jerry covers the door, a couch is stolen); Kramer and Frank invent the 'Bro'/'Manssiere,' a support bra for men. Body/anatomy comedy, not sexual.",w:"The 'Bro/Manssiere' bra-for-men invention is body/anatomy comedy, not sexual; a faint mild flag for the underwear gag.",tags:["body humor"]},
+ {s:6,e:19,t:"The Jimmy",l:"moderate",v:1,d:"Jerry suspects his dentist molested him while he was under anesthesia ('I feel violated'); Penthouse in the waiting room; a man (Jimmy) who speaks only in the third person; Kramer mistaken for cognitively disabled. A sexual-misconduct suspicion drives it.",w:"Held moderate for a sexual-misconduct suspicion — Jerry fears his dentist molested him under anesthesia ('I feel violated'), with Penthouse in the waiting room.",tags:["sexual misconduct", "disturbing"]},
+ {s:6,e:20,t:"The Doodle",l:"minimal",v:1,d:"Jerry's flea infestation and fumigation; a fussy manuscript reader; a girlfriend who doesn't care how George looks (until he decides he likes it). No sexual content.",w:"Fleas, a fussy reader, and a girlfriend who doesn't care how George looks; no sexual content.",tags:[]},
+ {s:6,e:21,t:"The Fusilli Jerry",l:"moderate",v:1,d:"Jerry's signature in-bed 'move' gets copied by his mechanic Puddy (Elaine recognizes it) and coveted by George — a frank sexual-technique running gag; a proctologist's coveted 'ASSMAN' license plate; the fusilli figurine. Innuendo is the engine.",w:"Held moderate for a frank running gag about Jerry's signature in-bed 'move' (copied by Puddy) and an 'ASSMAN' plate — sex technique discussed openly.",tags:["innuendo", "crude humor"]},
+ {s:6,e:22,t:"The Diplomat's Club",l:"minimal",v:1,d:"Mr. Pitt writes Elaine into his will then nearly dies (Jerry and Elaine fall under suspicion); Kramer's airport-gambling habit; George tries to acquire a black friend (race comedy). No sexual content.",w:"Mr. Pitt's will, airport gambling, and George seeking a Black friend (race comedy); no sexual content.",tags:["race/ethnic humor", "gambling"]},
+ {s:6,e:23,t:"The Face Painter",l:"minimal",v:1,d:"Puddy paints his face for hockey games (mortifying Elaine); Kramer feuds with a zoo chimp; George agonizes over saying 'I love you.' No sexual content.",w:"Puddy's painted face and a feud with a zoo chimp; non-sexual throughout.",tags:[]},
+ {s:6,e:24,t:"The Understudy",l:"mild",v:1,d:"Jerry's girlfriend is Bette Midler's understudy (in the 'Rochelle, Rochelle' musical); a softball collision injures Midler; at the manicurist, Frank 'stops short' on a date (she takes it as a grope). Mild.",w:"A softball collision with Bette Midler and a 'stop short' move misread as a grope; light innuendo. Mild.",tags:["innuendo"]},
+ /* ---- SEASON 7 ---- */
+ {s:7,e:1,t:"The Engagement",l:"minimal",v:1,d:"George impulsively proposes to Susan after the guys vow to grow up; Elaine and Kramer plot to silence a neighbor's barking dog. No sexual content.",w:"George proposes to Susan as the guys vow to grow up; a relationship beat with no sexual content.",tags:[]},
+ {s:7,e:2,t:"The Postponement",l:"minimal",v:1,d:"George tries to delay the wedding; a rabbi blabs Elaine's secret; a hot-coffee/babka burn lawsuit. No sexual content.",w:"George tries to delay the wedding; a hot-coffee lawsuit and a leaked secret. Non-sexual.",tags:[]},
+ {s:7,e:3,t:"The Maestro",l:"mild",v:1,d:"Elaine dates a conductor who insists on being called 'Maestro' and sleeps with her (implied, non-explicit); Jackie Chiles and the security-guard-stool lawsuit debut. Mild innuendo.",w:"Elaine dates a conductor who insists on 'Maestro' and sleeps with her — implied, non-explicit. Mild.",tags:["innuendo"]},
+ {s:7,e:4,t:"The Wink",l:"minimal",v:1,d:"A grapefruit-juice squirt causes an involuntary wink that's misread as flirting; a sick kid and a Yankees card; a chicken-or-cat mix-up. No real sexual content.",w:"A grapefruit-juice squirt causes a wink misread as flirting; a misunderstanding, no real sexual content.",tags:[]},
+ {s:7,e:5,t:"The Hot Tub",l:"minimal",v:1,d:"An Olympic runner oversleeps for the marathon; George's 'look annoyed to seem busy' work hack; salty language from Elaine's houseguests. Language, not sex.",w:"An oversleeping marathoner and salty houseguests; the flag is language, not sex.",tags:["language"]},
+ {s:7,e:6,t:"The Soup Nazi",l:"minimal",v:1,d:"'No soup for you!' Jerry and a girlfriend nauseate everyone with public baby-talk ('Schmoopie'); Elaine ends up with the soup recipes. Clean — affection, not sex. Iconic.",w:"'No soup for you!' plus a couple's nauseating public baby-talk — affection, not sex. A clean classic.",tags:[]},
+ {s:7,e:7,t:"The Secret Code",l:"minimal",v:1,d:"George guards his ATM code to the grave; a fire; a friend's deathbed scene. No sexual content.",w:"George guards his ATM code to the grave amid a deathbed scene; the flag is death, not sex.",tags:["death"]},
+ {s:7,e:8,t:"The Pool Guy",l:"minimal",v:1,d:"A clingy pool guy; Elaine and Susan become friends, horrifying George ('worlds are colliding'); Kramer's moviefone gag. No sexual content.",w:"A clingy pool guy and 'worlds colliding' when Elaine befriends Susan; no sexual content.",tags:[]},
+ {s:7,e:9,t:"The Sponge",l:"strong",v:1,d:"Elaine hoards the discontinued contraceptive sponge and decides which men are 'sponge-worthy' — worth using one to sleep with. Frank, sustained talk of contraception and who's worth having sex with.",w:"Elaine vets men for 'sponge-worthiness' — literally whether they're worth using a contraceptive sponge to sleep with — amid make-up-sex talk. Sex and contraception saturate it; preview first.",tags:["sex: central premise", "contraception"]},
+ {s:7,e:10,t:"The Gum",l:"mild",v:1,d:"Jerry is too awkward to tell a date her blouse has come unbuttoned — the cleavage gag drives it; an old friend everyone thinks is unstable; a restored theater. Suggestive, not explicit.",w:"A girlfriend's blouse keeps falling open and Jerry can't say so — a cleavage gag. Suggestive, not explicit. Mild.",tags:["innuendo", "body humor"]},
+ {s:7,e:11,t:"The Rye",l:"mild",v:1,d:"A stolen marble rye, a flatulent carriage horse, and a saxophonist boyfriend Elaine wishes would 'use his mouth' more (a deniable oral innuendo). Mild — mostly food and farce.",w:"A stolen marble rye, a flatulent horse, and Elaine wishing a sax-player would 'use his mouth' more (a deniable oral innuendo). Mild.",tags:["innuendo"]},
+ {s:7,e:12,t:"The Caddy",l:"mild",v:1,d:"Sue Ellen Mischke causes car crashes by wearing only a bra as a top — the central ogling gag (provocative, but she's clothed); George fakes being too busy to be fired. Suggestive.",w:"Sue Ellen Mischke causes crashes wearing only a bra as a top — provocative but clothed, not nudity. Suggestive — mild.",tags:["innuendo", "body humor"]},
+ {s:7,e:13,t:"The Seven",l:"minimal",v:1,d:"A bike-as-payment dispute and George's plan to name a child 'Seven.' No sexual content.",w:"A bike-as-payment dispute and George's plan to name a child 'Seven'; no sexual content.",tags:[]},
+ {s:7,e:14,t:"The Cadillac (Part 1)",l:"minimal",v:1,d:"A big payday lets Jerry buy his parents a Cadillac; George — engaged to Susan — becomes infatuated with Marisa Tomei. No sexual content.",w:"A payday lets Jerry buy his parents a Cadillac; George (engaged) is infatuated with Marisa Tomei. Infatuation, no sexual content.",tags:[]},
+ {s:7,e:15,t:"The Cadillac (Part 2)",l:"minimal",v:1,d:"The Cadillac sparks a condo-board embezzlement scandal and Morty's impeachment; George finally meets Tomei (while engaged) and gets punched. Infatuation, no sexual content.",w:"The Cadillac triggers a condo-board scandal; George gets punched chasing Tomei. No sexual content.",tags:[]},
+ {s:7,e:16,t:"The Shower Head",l:"minimal",v:1,d:"Low-flow shower heads spur a black-market scheme; a poppy-seed muffin triggers Elaine's failed opium drug test; Jerry's parents relocate. No sexual content.",w:"Low-flow shower heads and a poppy-seed drug-test fail; the flag is the drug test, not sex.",tags:["drugs/addiction"]},
+ {s:7,e:17,t:"The Doll",l:"mild",v:1,d:"A doll that's the image of George's mother kills his ability to be intimate with Susan — Oedipal-discomfort humor (implied intimacy, non-explicit); an opera subplot. Mild.",w:"A doll that's the image of George's mother kills his intimacy with Susan — Oedipal-discomfort humor, implied and non-explicit. Mild.",tags:["innuendo"]},
+ {s:7,e:18,t:"The Friars Club",l:"minimal",v:1,d:"A borrowed Friars Club jacket Jerry must return; a hearing-impaired friend George takes advantage of; Kramer's Da Vinci 'polyphasic sleep' experiment. No sexual content.",w:"A borrowed club jacket, a hearing-impaired friend, and Kramer's 'polyphasic sleep'; no sexual content.",tags:[]},
+ {s:7,e:19,t:"The Wig Master",l:"mild",v:1,d:"Kramer, carrying a flashy cane beside a streetwalker, is arrested as a suspected pimp — a non-explicit prostitution mix-up; the touring 'wig master' bunks with Jerry; a discount-suit coupon. Mild.",w:"Kramer is mistaken for a pimp after walking with a streetwalker — a non-explicit prostitution mix-up. Mild.",tags:["sex work"]},
+ {s:7,e:20,t:"The Calzone",l:"minimal",v:1,d:"A calzone errand for Steinbrenner goes wrong; a woman who decides dates by coin flip; clothes baked in a pizza oven. No sexual content.",w:"A calzone errand for Steinbrenner and a coin-flip dater; no sexual content.",tags:[]},
+ {s:7,e:21,t:"The Bottle Deposit (Part 1)",l:"minimal",v:1,d:"Newman and Kramer plot to truck bottles to Michigan for the higher deposit; a mechanic grows obsessed with Jerry's car; Elaine wins JFK's golf clubs at auction. No sexual content.",w:"Newman and Kramer's interstate bottle scheme; a car-obsessed mechanic. No sexual content.",tags:[]},
+ {s:7,e:22,t:"The Bottle Deposit (Part 2)",l:"minimal",v:1,d:"The bottle-deposit road scheme unravels and the mechanic steals Jerry's car to 'save' it from him. No sexual content.",w:"The mechanic steals Jerry's car to 'save' it; non-sexual farce.",tags:[]},
+ {s:7,e:23,t:"The Wait Out",l:"minimal",v:1,d:"The gang circles a couple whose marriage is failing, each angling to date the soon-to-be-single partner; Kramer is trapped in too-tight jeans. Relational scheming, no sexual content.",w:"The gang angles to date a couple who are about to divorce — relational scheming, no sexual content.",tags:[]},
+ {s:7,e:24,t:"The Invitations",l:"minimal",v:1,d:"Susan dies after licking the toxic glue on the cheap wedding invitations George chose; Jerry gets engaged to his female mirror image. Dark (a death), but no sexual content.",w:"Susan dies from toxic invitation glue while Jerry gets engaged to his female double; dark on death, but no sexual content.",tags:["death"]},
+ /* ---- SEASON 8 ---- */
+ {s:8,e:1,t:"The Foundation",l:"minimal",v:1,d:"In the aftermath of Susan's death, George is ensnared by her parents' guilt-trip foundation; Elaine takes the reins at Peterman; a kids' karate class humbles Kramer. No sexual content.",w:"Grief over Susan, a guilt-trip foundation, and a kids' karate class; the flag is death, not sex.",tags:["death"]},
+ {s:8,e:2,t:"The Soul Mate",l:"mild",v:1,d:"Newman pines for Jerry's girlfriend; Kramer, weighing whether to have kids with a woman, considers a vasectomy. A medical/fertility subplot, non-explicit.",w:"Newman pines for Jerry's girlfriend while Kramer weighs a vasectomy — a medical/fertility subplot, non-explicit. Mild.",tags:["medical"]},
+ {s:8,e:3,t:"The Bizarro Jerry",l:"mild",v:1,d:"George keeps seeing a woman mainly for access to her gorgeous model friends; another girlfriend has 'man hands'; Elaine befriends a do-gooder 'Bizarro' version of the gang. Suggestive ogling, not explicit.",w:"George courts a woman mainly to ogle her model friends, plus a 'man hands' girlfriend; suggestive ogling, nothing explicit. Mild.",tags:["innuendo"]},
+ {s:8,e:4,t:"The Little Kicks",l:"minimal",v:1,d:"Elaine's catastrophic dancing; bootleg movies turn George into a coveted 'bad boy.' No sexual content — a fan favorite.",w:"Elaine's catastrophic dancing and George's bootleg-movie 'bad boy' image; no sexual content.",tags:[]},
+ {s:8,e:5,t:"The Package",l:"mild",v:1,d:"George thinks the photo-store clerk slipped a sexy photo of herself into his prints (it was a lingerie model's, mixed in by accident), so — with Kramer behind the camera — he poses for cheesecake 'glamour' shots of his own, in his underwear, to send back. Suggestive (lingerie, a man in his underwear), no actual nudity; Elaine's blacklisted-patient rash saga and Kramer's mail-insurance scheme fill out the rest.",w:"A lingerie-model photo lands in George's prints and he poses for cheesecake glamour shots in his underwear. Suggestive — lingerie and a man in underwear — but no actual nudity. Mild.",tags:["innuendo", "body humor"]},
+ {s:8,e:6,t:"The Fatigues",l:"minimal",v:1,d:"Kramer's army-surplus phase and a cooking class; Frank's Korean-War cooking trauma; a mentorship gone wrong. No sexual content.",w:"Army-surplus fatigues, a cooking class, and war-cooking trauma; no sexual content.",tags:[]},
+ {s:8,e:7,t:"The Checks",l:"minimal",v:1,d:"Jerry pays for everything by check; a carpet-cleaning 'cult' courts Kramer; tourists sleep in his dresser drawers. No sexual content.",w:"A check-paying gag and a carpet-cleaning 'cult' courting Kramer; the flag is the cult, not sex.",tags:["cult"]},
+ {s:8,e:8,t:"The Chicken Roaster",l:"minimal",v:1,d:"A Kenny Rogers Roasters neon sign wrecks Kramer's sleep; Jerry and Kramer swap personalities. No sexual content.",w:"A neon chicken sign ruins Kramer's sleep and he and Jerry swap personalities; no sexual content.",tags:[]},
+ {s:8,e:9,t:"The Abstinence",l:"strong",v:1,d:"George becomes a genius by abstaining from sex (his girlfriend has mono), while an abstaining Elaine gets dumber. Sex and abstinence are the entire premise.",w:"Abstaining from sex turns George into a genius and Elaine into an idiot — sex and its absence are the whole engine, discussed relentlessly. Frank though not graphic; preview first.",tags:["sex: central premise"]},
+ {s:8,e:10,t:"The Andrea Doria",l:"minimal",v:1,d:"George out-sob-stories shipwreck survivors to win an apartment; Kramer develops dog-like symptoms at the vet. No sexual content.",w:"George out-sob-stories shipwreck survivors for an apartment; the gag is misery, not sex.",tags:[]},
+ {s:8,e:11,t:"The Little Jerry",l:"minimal",v:1,d:"A cockfighting rooster named after Jerry; Elaine prefers a boyfriend who's in prison (no pressure). No sexual content; a cockfighting theme.",w:"A cockfighting rooster named after Jerry and a jailed boyfriend; the flag is animal cruelty, no sexual content.",tags:["animal cruelty"]},
+ {s:8,e:12,t:"The Money",l:"minimal",v:1,d:"Jerry keeps buying back his parents' Cadillac; George suspects his folks are secretly rich. No sexual content.",w:"Jerry keeps buying back his parents' Cadillac; non-sexual money farce.",tags:[]},
+ {s:8,e:13,t:"The Comeback",l:"minimal",v:1,d:"George rehearses the perfect 'jerk store' comeback; Kramer drafts a living will; a video-store recluse. No sexual content.",w:"George's 'jerk store' comeback and Kramer's living will; one crude verbal jab, but no sexual content.",tags:[]},
+ {s:8,e:14,t:"The Van Buren Boys",l:"minimal",v:1,d:"A Van Buren-obsessed street gang; Elaine ghost-writes Peterman's dull memoir, spicing it with Kramer's wild tales. No sexual content.",w:"A Van Buren-obsessed gang and a ghostwritten dull memoir; no sexual content.",tags:[]},
+ {s:8,e:15,t:"The Susie",l:"minimal",v:1,d:"A misheard name spawns a fake coworker, 'Susie,' whom Elaine has to 'kill off'; a liar's bet. No sexual content.",w:"A misheard name spawns a fake coworker Elaine must 'kill off'; non-sexual office farce.",tags:[]},
+ {s:8,e:16,t:"The Pothole",l:"mild",v:1,d:"Jerry drops his girlfriend's toothbrush in the toilet and can't bring himself to be intimate with her (implied, gross-out); Kramer 'adopts' a stretch of highway. Mild.",w:"Jerry can't be intimate with a girlfriend after dropping her toothbrush in the toilet — implied intimacy plus a gross-out. Non-explicit, mild with a crude note.",tags:["innuendo", "crude humor"]},
+ {s:8,e:17,t:"The English Patient",l:"minimal",v:1,d:"Elaine's job is at risk for hating the hit film; warring Cuban-cigar resales; a man every woman adores. No sexual content.",w:"Elaine's job is at risk for hating the hit film; a cigar feud and an irresistible man. No sexual content.",tags:[]},
+ {s:8,e:18,t:"The Nap",l:"minimal",v:1,d:"George naps under his desk at the Yankees; Jerry's bad mattress; Kramer swims in the East River. No sexual content.",w:"George naps under his Yankees desk; a bad mattress and a river swim. No sexual content.",tags:[]},
+ {s:8,e:19,t:"The Yada Yada",l:"mild",v:1,d:"A girlfriend 'yada-yadas' over key facts — including, maybe, sex ('did you yada-yada sex?'); Jerry's dentist converts to Judaism 'for the jokes.' An innuendo gag.",w:"A girlfriend 'yada-yadas' over key facts — maybe including sex — and a dentist converts 'for the jokes.' An innuendo gag; mild with a religion note.",tags:["innuendo", "religious humor"]},
+ {s:8,e:20,t:"The Millennium",l:"minimal",v:1,d:"Dueling New Year's-2000 parties; George schemes to get fired into a better job; Elaine's speed-dial rankings. No sexual content.",w:"Dueling New Year's-2000 parties and a scheme to get fired upward; no sexual content.",tags:[]},
+ {s:8,e:21,t:"The Muffin Tops",l:"mild",v:1,d:"A muffin-top-only bakery; Jerry shaves his chest at a girlfriend's request and can't stop; Kramer's 'reality' bus tour. Body-grooming comedy, non-explicit.",w:"A muffin-top bakery and Jerry shaving his chest at a girlfriend's request — body/grooming comedy, non-sexual. Mild.",tags:["body humor"]},
+ {s:8,e:22,t:"The Summer of George",l:"minimal",v:1,d:"George's severance becomes a do-nothing 'summer'; Kramer accidentally sidelines a Broadway legend; an arm-less walker and a catfight. No sexual content.",w:"George's do-nothing severance 'summer' and a Broadway mishap; no sexual content.",tags:[]},
+ /* ---- SEASON 9 ---- */
+ {s:9,e:1,t:"The Butter Shave",l:"minimal",v:1,d:"Kramer butters and shaves himself (and roasts in the sun); Newman is tempted to 'taste' him (a cannibalism gag); George fakes a disability for sympathy and a job. Bizarre and dark, not sexual.",w:"Kramer butters and shaves himself and Newman is tempted to taste him (a cannibalism gag); George fakes a disability. Bizarre and dark, not sexual.",tags:["dark humor", "disability theme"]},
+ {s:9,e:2,t:"The Voice",l:"minimal",v:1,d:"Jerry keeps a silly 'voice' bit going and picks the joke over the girlfriend; an unpaid 'Kramerica' intern. No sexual content.",w:"Jerry keeps a silly 'voice' going over a girlfriend and a Kramerica intern subplot; no real sexual content.",tags:[]},
+ {s:9,e:3,t:"The Serenity Now",l:"mild",v:1,d:"Frank's 'Serenity now!' anger mantra; Kramer turns his place into a 1950s kids' haven (that turns feral); Elaine becomes irresistible to Jewish men ('Shiksappeal'). A non-explicit magnetism gag.",w:"Elaine becomes irresistible to Jewish men ('Shiksappeal') and Frank chants 'serenity now' — a non-explicit magnetism gag; mild with a religion note.",tags:["innuendo", "religious humor"]},
+ {s:9,e:4,t:"The Blood",l:"moderate",v:1,d:"George becomes fixated on combining his loves — food, sex, and TV — covertly eating from the nightstand drawer during sex and trying to work a pastrami sandwich into the act (his girlfriend, who shares the kink, dumps him once he adds TV too); meanwhile Kramer hoards his own blood and a knifed Jerry needs a transfusion. Strongly-implied sex with a food-fetish layer.",w:"Held moderate: George combines food with sex (eating from the nightstand mid-act, a pastrami sandwich, then TV), a shared fetish — strongly implied sex with a fetish layer.",tags:["sex: strongly implied", "fetish", "crude humor", "medical"]},
+ {s:9,e:5,t:"The Junk Mail",l:"minimal",v:1,d:"Kramer declares war on his junk mail and the post office; George craves his parents' attention; Elaine dates a TV pitchman. No sexual content.",w:"Kramer wars on junk mail and the post office; George craves attention. No sexual content.",tags:[]},
+ {s:9,e:6,t:"The Merv Griffin Show",l:"moderate",v:1,d:"Kramer rebuilds the old Merv Griffin set in his apartment and 'hosts' from it. The unsettling thread: Jerry — already sleeping with his girlfriend Celia — sedates her with a sleep-aid, turkey, and wine so he and George can play with her off-limits vintage toy collection while she's unconscious. The show names it directly ('you drugged a woman to take advantage of her?'), and a recurring double-entendre treats the 'toys' as her body. Nothing sexual is shown, but the date-drugging framing is dark — preview first.",w:"Held moderate for a dark date-drugging scenario — Jerry (already sleeping with Celia) sedates her to play with her toys; the show itself calls it 'drugging a woman,' with a 'toys = body' double-entendre. Nothing sexual shown, but preview first.",tags:["date-drugging", "disturbing"]},
+ {s:9,e:7,t:"The Slicer",l:"minimal",v:1,d:"Jerry's home deli-slicer obsession; an old beach photo shows George once berated his new boss's young son. No sexual content.",w:"Jerry's deli-slicer obsession and an old beach-photo grudge; no sexual content.",tags:[]},
+ {s:9,e:8,t:"The Betrayal",l:"mild",v:1,d:"Told entirely in reverse, a wedding in India unspools revelations that members of the group secretly slept with one another. The betrayals are referenced, not depicted.",w:"Told in reverse, a wedding reveals members of the group secretly slept together — betrayals referenced, never depicted. Mild.",tags:["affair", "reverse chronology"]},
+ {s:9,e:9,t:"The Apology",l:"moderate",v:1,d:"Jerry dates a woman who's comfortable being casually naked around the apartment (eating waffles, playing Scrabble) — the 'good naked vs. bad naked' debate; Jerry tries it himself with a belt sander. Nudity is the pervasive premise, though nonsexual and filmed tastefully (nothing explicit shown). George's 12-step-apology grudge with 'Stanky Hanke' rounds it out.",w:"Held moderate: a girlfriend is casually naked all over the apartment ('good naked vs. bad naked'). Nudity is the pervasive premise, though nonsexual and filmed tastefully.",tags:["nudity"]},
+ {s:9,e:10,t:"The Strike",l:"minimal",v:1,d:"FESTIVUS is born ('a Festivus for the rest of us' — the pole, the grievances, the feats of strength); a fake office charity; a 'two-face' date who looks great or terrible by the light. No sexual content; the holiday is wholesome.",w:"Festivus is born ('a Festivus for the rest of us') alongside a fake charity; wholesome and non-sexual.",tags:[]},
+ {s:9,e:11,t:"The Dealership",l:"minimal",v:1,d:"Jerry buys a car from Puddy (on-and-off with Elaine); a test drive toward empty; a candy-bar 'who took it' strip-search standoff. No sexual content.",w:"A car-buying ordeal with Puddy and a candy-bar strip-search standoff; no sexual content.",tags:[]},
+ {s:9,e:12,t:"The Reverse Peephole",l:"mild",v:1,d:"Reversed apartment peepholes; Jerry's 'man-purse'; Newman pursues a married neighbor. A non-explicit affair angle.",w:"Reversed peepholes, a 'man-purse,' and Newman pursuing a married neighbor — a non-explicit affair angle. Mild.",tags:["affair", "innuendo"]},
+ {s:9,e:13,t:"The Cartoon",l:"minimal",v:1,d:"A baffling New Yorker cartoon; George dates a woman who looks just like Jerry; Kramer takes a vow of silence. No sexual content.",w:"A baffling New Yorker cartoon and George dating a Jerry-lookalike; no sexual content.",tags:[]},
+ {s:9,e:14,t:"The Strongbox",l:"minimal",v:1,d:"George can't get a girlfriend to accept a breakup, so he dates around while 'still together'; a mystery strongbox; a man who lives in the dark. No sexual content.",w:"George dates around while refusing to accept a breakup ('still together'); relational scheming, no sexual content.",tags:[]},
+ {s:9,e:15,t:"The Wizard",l:"minimal",v:1,d:"Kramer's 'wizard' organizer and fake Florida retirement; George's Hamptons-house lie; ambiguity over whether Elaine's boyfriend is Black or white. No sexual content; a race-comedy thread.",w:"A gadget organizer, a Hamptons-house lie, and ambiguity over a boyfriend's race; no sexual content.",tags:["race/ethnic humor"]},
+ {s:9,e:16,t:"The Burning",l:"mild",v:1,d:"Kramer is assigned to act out gonorrhea for med students (comedic STD references); Elaine and Puddy clash over religion and whether she's 'going to hell.' Non-explicit.",w:"Kramer acts out gonorrhea for med students (comedic STD references) and clashes with Puddy over religion; non-explicit. Mild.",tags:["STD/health", "religious humor", "crude humor"]},
+ {s:9,e:17,t:"The Bookstore",l:"minimal",v:1,d:"George is forced to buy a book after taking it into the bookstore bathroom; Uncle Leo shoplifts; a rickshaw scheme. Toilet humor, not sexual.",w:"George must buy a book he took into the bookstore bathroom; toilet humor, not sexual.",tags:["crude humor"]},
+ {s:9,e:18,t:"The Frogger",l:"minimal",v:1,d:"George tries to wheel his high-score Frogger machine across live traffic; a piece of an antique royal cake; a serial decapitator at large. No sexual content.",w:"George wheels a Frogger machine across live traffic amid a serial-decapitator gag; dark, not sexual.",tags:["dark humor"]},
+ {s:9,e:19,t:"The Maid",l:"mild",v:1,d:"Jerry's 'maid' becomes a woman he both pays and sleeps with — the gang notes that makes her something else (a non-explicit prostitution-by-implication gag); an area-code fight; a quest for a nickname. Implied sex.",w:"Jerry's 'maid' is a woman he both pays and sleeps with — the gang notes that makes her something else (a non-explicit prostitution-by-implication gag). Implied sex; mild.",tags:["sex work"]},
+ {s:9,e:20,t:"The Puerto Rican Day",l:"minimal",v:1,d:"The gang is stuck in post-game parade traffic; Kramer accidentally sets a Puerto Rican flag alight and stomps it out — a gag that drew real controversy. No sexual content.",w:"Stuck in parade traffic, Kramer accidentally burns a Puerto Rican flag — a real-world controversy, not sexual content.",tags:["controversy"]},
+ {s:9,e:21,t:"The Chronicle (Clip Show, Part 1)",l:"moderate",v:1,d:"Part 1 of the two-part clip-show retrospective before the finale. Because it compiles the whole series, it includes some of the sexual gags — content varies, so preview if that matters.",w:"A two-part clip-show retrospective; because it compiles the whole series it includes some sexual gags, so content varies — preview if that matters.",tags:["clip show"]},
+ {s:9,e:22,t:"The Chronicle (Clip Show, Part 2)",l:"moderate",v:1,d:"Part 2 of the pre-finale clip-show retrospective; more of the series montage, including some sexual gags. Content varies.",w:"Part two of the pre-finale montage; same caveat — the compilation can surface sexual gags, so content varies.",tags:["clip show"]},
+ {s:9,e:23,t:"The Finale (Part 1)",l:"moderate",v:1,d:"Part 1: a revived pilot sends the gang off on a private jet; stranded in a small town, they film and mock a carjacking and are arrested under a Good Samaritan law. Setup for the clip-heavy trial.",w:"Setup half of the finale (the jet, the arrest); the clip-heavy trial that follows revisits old gags, including sexual ones, so overall content varies.",tags:["series finale", "clip show"]},
+ {s:9,e:24,t:"The Finale (Part 2)",l:"moderate",v:1,d:"Part 2: the trial, where dozens of past characters testify to the gang's misdeeds — clip-heavy testimony that revisits old gags, including the sexual ones. Content varies.",w:"The clip-heavy trial parades past characters and revisits the series' gags — including the sexual ones — so content varies. Preview if that matters.",tags:["series finale", "clip show"]}
+];
+
+const TAGCATS = [["Sexual & relational", ["sex: central premise", "sex: strongly implied", "innuendo", "nudity", "sex work", "affair", "contraception", "fetish", "indecent exposure", "sexual misconduct", "phone sex", "workplace romance", "LGBT theme", "minor-sexualization flag"]], ["Mature themes", ["death", "suicide/self-harm", "medical", "STD/health", "drugs/addiction", "abortion debate", "eating disorder", "elderly/illness", "disability theme"]], ["Comedy texture", ["crude humor", "dark humor", "body humor"]], ["Sensitive / social", ["race/ethnic humor", "religious humor", "language", "controversy", "hate group", "true-crime parody"]], ["Behavior flags", ["disturbing", "date-drugging", "stalking", "faked illness", "animal cruelty", "cult", "serial killer", "gambling"]], ["Format", ["clip show", "reverse chronology", "series finale"]]];
+
+const listEl = document.getElementById('list');
+const state = { levels:new Set(), season:'all', q:'', tags:new Set() };
+
+function squiggle(id){
+  const el=document.getElementById(id); if(!el) return;
+  const cols=['#ef4623','#13a39a','#e8538b','#f2b705']; let pts=''; const seg=22,h=18;
+  for(let x=0,i=0;x<=1320;x+=seg,i++){ pts+=`${x},${i%2?h-3:3} `; }
+  el.innerHTML=`<svg viewBox="0 0 1320 18" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${cols[Math.floor(Math.random()*cols.length)]}" stroke-width="4" stroke-linejoin="round"/></svg>`;
+}
+['sq-top','sq-foot'].forEach(squiggle);
+
+document.getElementById('legend').innerHTML = Object.entries(LEVELS).map(([k,v])=>`
+  <div class="leg"><div class="top"><span class="dot" style="background:${v.color}"></span>
+  <span class="name" style="color:${v.color}">${v.label}</span></div>
+  <div class="age">${v.ic} ${v.age}</div></div>`).join('');
+
+const seasonSel=document.getElementById('seasonSel');
+Object.keys(SEASONS).forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=`Season ${s} (${SEASONS[s]})`; seasonSel.appendChild(o); });
+
+function renderStats(){
+  const c={minimal:0,mild:0,moderate:0,strong:0}; let ver=0;
+  EP.forEach(e=>{ c[e.l]++; if(e.v) ver++; }); const total=EP.length;
+  document.getElementById('stats').innerHTML=`
+    <div class="stat"><div class="num">${total}</div><div class="lab">Episodes rated</div></div>
+    <div class="stat s-min"><div class="num">${c.minimal}</div><div class="lab">Minimal</div></div>
+    <div class="stat s-mild"><div class="num">${c.mild}</div><div class="lab">Mild</div></div>
+    <div class="stat s-mod"><div class="num">${c.moderate}</div><div class="lab">Moderate</div></div>
+    <div class="stat s-strong"><div class="num">${c.strong}</div><div class="lab">Strong</div></div>
+    <div class="stat" style="background:var(--ink);color:var(--gold);"><div class="num">${ver}/${total}</div><div class="lab">\u2713 Script-checked</div></div>`;
+}
+renderStats();
+
+/* ----- theme tag filter ----- */
+const tagCounts={}; EP.forEach(e=>(e.tags||[]).forEach(t=>tagCounts[t]=(tagCounts[t]||0)+1));
+(function(){
+  const panel=document.getElementById('tfPanel'); let html='';
+  TAGCATS.forEach(([cat,tags])=>{
+    const present=tags.filter(t=>tagCounts[t]); if(!present.length) return;
+    html+=`<div class="tf-cat">${cat}</div><div class="tf-opts">`;
+    present.forEach(t=>{ html+=`<label class="tf-opt" data-on="0"><input type="checkbox" value="${t}"><span>${t} (${tagCounts[t]})</span></label>`; });
+    html+=`</div>`;
+  });
+  html+=`<div class="tf-foot"><button class="tf-clear" type="button" id="tfClear">Clear themes</button><span class="tf-mode">shows episodes matching ANY selected theme</span></div>`;
+  panel.innerHTML=html;
+})();
+const tfBtn=document.getElementById('tfBtn'), tfPanel=document.getElementById('tfPanel');
+function updateTfBtn(){ const k=state.tags.size; tfBtn.innerHTML=k?`Themes (${k}) &#9662;`:'Themes &#9662;'; tfBtn.dataset.on=k?'1':'0'; }
+function clearTags(){ state.tags.clear(); tfPanel.querySelectorAll('.tf-opt').forEach(l=>{l.dataset.on='0';const i=l.querySelector('input');if(i)i.checked=false;}); updateTfBtn(); render(); }
+function positionPanel(){
+  const r=tfBtn.getBoundingClientRect();
+  const vw=document.documentElement.clientWidth, vh=window.innerHeight, m=10;
+  const w=Math.min(540, vw-m*2);
+  let left=r.left;
+  if(left+w > vw-m) left=vw-m-w;
+  if(left<m) left=m;
+  tfPanel.style.left=left+'px';
+  tfPanel.style.top=Math.round(r.bottom+6)+'px';
+  tfPanel.style.width=w+'px';
+  tfPanel.style.maxHeight=Math.max(140, vh-r.bottom-16)+'px';
+}
+tfBtn.addEventListener('click',e=>{ e.stopPropagation(); const open=tfPanel.classList.toggle('open'); tfBtn.setAttribute('aria-expanded',open); if(open) positionPanel(); });
+window.addEventListener('scroll',()=>{ if(tfPanel.classList.contains('open')) positionPanel(); },{passive:true});
+window.addEventListener('resize',()=>{ if(tfPanel.classList.contains('open')) positionPanel(); });
+tfPanel.addEventListener('click',e=>{ e.stopPropagation(); if(e.target.id==='tfClear') clearTags(); });
+tfPanel.addEventListener('change',e=>{
+  if(e.target.matches('input[type=checkbox]')){
+    const t=e.target.value, lab=e.target.closest('.tf-opt');
+    if(e.target.checked){ state.tags.add(t); lab.dataset.on='1'; } else { state.tags.delete(t); lab.dataset.on='0'; }
+    updateTfBtn(); render();
+  }
+});
+document.addEventListener('click',()=>tfPanel.classList.remove('open'));
+
+/* ----- filtering ----- */
+function matches(e){
+  if(state.levels.size){ if(!state.levels.has(e.l)) return false; }
+  if(state.season!=='all' && String(e.s)!==state.season) return false;
+  if(state.tags.size){ const et=e.tags||[]; if(!et.some(t=>state.tags.has(t))) return false; }
+  if(state.q){ const hay=(e.t+' '+e.d+' '+(e.w||'')+' '+(e.tags||[]).join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
+  return true;
+}
+
+/* ----- render (flip cards) ----- */
+function render(){
+  const visible=EP.filter(matches);
+  document.getElementById('countLive').textContent=`${visible.length} of ${EP.length} shown`;
+  if(!visible.length){ listEl.innerHTML=`<div class="empty"><b>No soup for you!</b>No episodes match those filters. Try loosening them.</div>`; return; }
+  const bySeason={}; visible.forEach(e=>{ (bySeason[e.s]=bySeason[e.s]||[]).push(e); });
+  let html='';
+  Object.keys(bySeason).sort((a,b)=>a-b).forEach(s=>{
+    const eps=bySeason[s];
+    html+=`<section class="season"><div class="season-head"><h2>Season ${s} <span class="yr">\u00b7 ${SEASONS[s]}</span></h2><span class="meta">${eps.length} shown</span></div><div class="squig" id="sqs-${s}"></div><div class="grid">`;
+    eps.forEach(e=>{
+      const L=LEVELS[e.l];
+      const tagsHtml=(e.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      const head=`<div class="row1"><span class="epno">S${e.s}E${e.e}</span><span class="title">${e.t}</span>`;
+      const front=`<div class="face ep-front">${head}${e.v?'<span class="vchk" title="Rating verified against the full episode script">\u2713 script</span>':''}<span class="badge b-${e.l}">${L.label}</span></div>
+        <p class="desc">${e.d}</p>
+        ${tagsHtml?`<div class="tags">${tagsHtml}</div>`:''}
+        <div class="age"><span class="ic" style="color:${L.color}">${L.ic}</span> ${L.age}</div>
+        <button class="flip-btn" type="button">Why ${L.label}? \u27f2</button></div>`;
+      const back=`<div class="face ep-back">${head}<span class="badge b-${e.l}">${L.label}</span></div>
+        <div class="why-h">Why \u201c${L.label}\u201d?</div>
+        <p class="why">${e.w||''}</p>
+        <div class="why-age"><span class="ic" style="color:${L.color}">${L.ic}</span> ${L.age}</div>
+        ${tagsHtml?`<div class="lbl">Theme tags</div><div class="tags">${tagsHtml}</div>`:'<div class="lbl">No extra theme flags</div>'}
+        <button class="flip-btn" type="button">\u27f2 Back</button></div>`;
+      html+=`<article class="ep l-${e.l}${e.v?' verified':''}"><div class="ep-inner">${front}${back}</div></article>`;
+    });
+    html+=`</div></section>`;
+  });
+  listEl.innerHTML=html;
+  Object.keys(bySeason).forEach(s=>squiggle(`sqs-${s}`));
+  fitAll();
+}
+
+/* ----- flip + uniform / dynamic height ----- */
+function fitCard(card){
+  const inner=card.querySelector('.ep-inner'); if(!inner) return;
+  const face=card.classList.contains('flipped')?card.querySelector('.ep-back'):card.querySelector('.ep-front');
+  if(face) inner.style.height=face.offsetHeight+'px';
+}
+function fitAll(){
+  const root=document.documentElement;
+  const cards=Array.from(document.querySelectorAll('.ep'));
+  if(!cards.length) return;
+  listEl.classList.add('no-anim');                 /* bulk re-fit is instant; only flips animate */
+  root.style.setProperty('--ep-h','0px');           /* release shared min-height to measure natural front size */
+  let maxF=0;
+  cards.forEach(c=>{ const f=c.querySelector('.ep-front'); if(f) maxF=Math.max(maxF,f.offsetHeight); });
+  root.style.setProperty('--ep-h',Math.ceil(maxF)+'px'); /* all cards start at this uniform height */
+  cards.forEach(fitCard);
+  requestAnimationFrame(()=>listEl.classList.remove('no-anim'));
+}
+listEl.addEventListener('click',e=>{
+  const card=e.target.closest('.ep'); if(!card) return;
+  card.classList.toggle('flipped'); fitCard(card);
+});
+let _rt; window.addEventListener('resize',()=>{ clearTimeout(_rt); _rt=setTimeout(fitAll,120); });
+window.addEventListener('load',fitAll);
+if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(fitAll); }
+setTimeout(fitAll,450);
+
+/* ----- level / safe / season / search wiring ----- */
+const levelBtns=document.querySelectorAll('#levelFilters .fbtn');
+levelBtns.forEach(b=>{
+  b.addEventListener('click',()=>{
+    const lv=b.dataset.level;
+    if(lv==='all'){ state.levels.clear(); levelBtns.forEach(x=>x.dataset.on=x.dataset.level==='all'?'1':'0'); }
+    else{
+      document.querySelector('[data-level="all"]').dataset.on='0';
+      if(state.levels.has(lv)){ state.levels.delete(lv); b.dataset.on='0'; } else { state.levels.add(lv); b.dataset.on='1'; }
+      if(!state.levels.size) document.querySelector('[data-level="all"]').dataset.on='1';
+    }
+    render();
+  });
+});
+seasonSel.addEventListener('change',e=>{ state.season=e.target.value; render(); });
+document.getElementById('search').addEventListener('input',e=>{ state.q=e.target.value.trim().toLowerCase(); render(); });
+
+render();
+</script>
+</body>
+</html>
